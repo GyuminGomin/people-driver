@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.gls.ppldv.common.util.CookieUtils;
 import com.gls.ppldv.configuration.userException.LoginFailedException;
+import com.gls.ppldv.configuration.userException.RegisterFailedException;
 import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 import com.gls.ppldv.user.entity.PassCode;
@@ -40,26 +41,13 @@ public class MemberController {
 		HttpHeaders headers = new HttpHeaders();
 		// MultipartFile로 변환
 		headers.add("Content-Type", "text/plain;charset=utf-8");
-		if (file != null && !file.isEmpty()) {
-			try {
-				message = ms.register(member, file);
-				response = new ResponseEntity<>(message, headers, HttpStatus.OK);
-			} catch (IllegalArgumentException e) {
-				response = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.OK);
-			} catch (Exception e) {
-				response = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
-				e.printStackTrace();
-			}
-		} else {
-			try {
-				message = ms.register(member);
-				response = new ResponseEntity<>(message, headers, HttpStatus.OK);
-			} catch (IllegalArgumentException e) {
-				response = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.OK);
-			} catch (Exception e) {
-				response = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
-				e.printStackTrace();
-			}
+		try {
+			message = ms.register(member, file);
+			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
+		} catch (RegisterFailedException e) {
+			response = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return response;
 	}
@@ -94,10 +82,9 @@ public class MemberController {
 			result = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.OK);
 			return result;
 		} catch (Exception e) {
-			result = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
 			e.printStackTrace();
-			return result;
 		}
+		return result;
 	}
 
 	// 비밀번호 찾기 처리
@@ -127,7 +114,7 @@ public class MemberController {
 		HttpHeaders headers = new HttpHeaders();
 		
 		headers.add("Content-Type", "text/plain;charset=utf-8");
-		if (message.equals("코드 일치")) {
+		if (message.equals("Code Equal")) {
 			return new ResponseEntity<>(message, headers, HttpStatus.OK);
 		} else {
 			// 코드 인증 실패

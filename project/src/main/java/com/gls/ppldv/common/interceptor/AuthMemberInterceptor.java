@@ -27,7 +27,7 @@ public class AuthMemberInterceptor implements HandlerInterceptor {
 				PrintWriter out = response.getWriter();
 				
 				out.println("<script>");
-				out.println("alert('로그인부터 해주세요.');");
+				out.println("alert('Login Please');");
 				out.println("location.href='"+contextPath+"/user/login'");
 				out.println("</script>");
 				return false;

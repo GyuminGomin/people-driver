@@ -256,7 +256,7 @@
 			contentType: false,
 			dataType: "text",
 			success: function(result) {
-				alert(result);
+				alert("등록 성공");
 				window.location.href="/developer/profile?id=${loginMember.id}";
 			},
 			error: function(res) {

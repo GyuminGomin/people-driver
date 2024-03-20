@@ -71,26 +71,13 @@ public class MemberPathController {
 
 		String message = null;
 		// 만약 회원 이미지가 변경되었다면, 삭제 후 다시 업로드
-		if (file != null && !file.isEmpty()) {
-			try {
-				message = ms.editProfile(member, file);
+		try {
+			message = ms.editProfile(member, file);
 
-				// 이걸 꼭 이렇게 저장해야 하나..?
-				Member m = ms.findMember(member.getEmail());
-				session.setAttribute("loginMember", m);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			// 파일 존재하지 않을 때
-			try {
-				message = ms.editProfile(member);
-				
-				Member m = ms.findMember(member.getEmail());
-				session.setAttribute("loginMember", m);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			Member m = ms.findMember(member.getEmail());
+			session.setAttribute("loginMember", m);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		rttrs.addFlashAttribute("message", message);
@@ -104,7 +91,7 @@ public class MemberPathController {
 		try {
 			message = ms.removeUser(email);
 		} catch (Exception e) {
-			message = "삭제 실패 (다시 삭제 요청을 해주세요.)";
+			message = "Remove Failed Try Again!";
 			e.printStackTrace();
 		}
 

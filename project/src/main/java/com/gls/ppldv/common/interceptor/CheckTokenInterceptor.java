@@ -24,7 +24,7 @@ public class CheckTokenInterceptor implements HandlerInterceptor {
 				response.setContentType("text/html;charset=utf-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('잘못된 접근입니다.');");
+				out.println("alert('Wrong Access');");
 				out.println("history.go(-1);");
 				out.println("</script>");
 				return false;

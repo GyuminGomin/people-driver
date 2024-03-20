@@ -64,7 +64,7 @@
 				},
 				dataType : "text",
 				success : function(result) {
-					if (result === '일치하는 회원 정보가 없습니다.') {
+					if (result === 'NOT EXISTS') {
 						alert(result);
 						email.val('');
 						name.val('');
@@ -72,12 +72,12 @@
 						ready.css("display", "none");
 					} else {
 						// 메일 발송 성공
-						alert(result);
+						alert("메일 발송 성공 메일함을 확인해주세요.");
 						$("#formSubmit").click();
 					}
 				},
 				error : function(res) {
-					alert(res.responseText);
+					alert("메일 발송 실패 운영자한테 문의해주세요.");
 				}
 			});
 		}

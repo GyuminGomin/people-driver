@@ -18,6 +18,7 @@ import com.gls.ppldv.common.util.CookieUtils;
 import com.gls.ppldv.common.util.FileUtil;
 import com.gls.ppldv.common.util.GmailAuthentication;
 import com.gls.ppldv.configuration.userException.LoginFailedException;
+import com.gls.ppldv.configuration.userException.RegisterFailedException;
 import com.gls.ppldv.developer.service.DeveloperService;
 import com.gls.ppldv.user.dto.EditDTO;
 import com.gls.ppldv.user.dto.LoginDTO;
@@ -49,12 +50,15 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	@Transactional // 2개 이상의 db 처리 관리
 	public String register(Member member, MultipartFile file) throws Exception {
-		String message = "회원가입실패";
+		String message = "Register Failed";
 		Member m = mm.idCheck(member.getEmail());
+		
 		// 아이디 중복 체크
 		if (m != null) {
-			throw new IllegalArgumentException("아이디 중복입니다. 다시 선택해주세요.");
-		} else {
+			throw new RegisterFailedException("ID Duplicate Retry!");
+		}
+		
+		if (file != null && !file.isEmpty()) {
 			// 비밀번호 encoding
 			String encPass = CookieUtils.encrypt(member.getPassword());
 			member.setPassword(encPass);
@@ -69,23 +73,9 @@ public class MemberServiceImpl implements MemberService {
 				// 회원 정보 저장
 				Member mem = mr.save(member);
 				if (mem != null) {
-					message = "회원가입성공";
-				} else {
-					fu.deleteFile(savedFileName);
-					message = "회원가입실패 (DB 요청 실패)";
+					message = "Register Success";
 				}
 			}
-		}
-		return message;
-	}
-
-	@Override
-	public String register(Member member) throws Exception {
-		String message = "회원가입실패";
-		Member m = mm.idCheck(member.getEmail());
-
-		if (m != null) {
-			throw new IllegalArgumentException("아이디 중복입니다. 다시 선택해주세요.");
 		} else {
 			// 비밀번호 encoding
 			String encPass = CookieUtils.encrypt(member.getPassword());
@@ -93,8 +83,7 @@ public class MemberServiceImpl implements MemberService {
 			
 			Member mem = mr.save(member);
 			if (mem != null) {
-				message = "회원가입 성공";
-				System.out.println(message);
+				message = "Register Success";
 			}
 		}
 		return message;
@@ -121,7 +110,7 @@ public class MemberServiceImpl implements MemberService {
 			return m;
 		} else {
 			// 로그인 실패
-			throw new LoginFailedException("이메일 또는 비밀번호가 일치하지 않습니다.");
+			throw new LoginFailedException("NOT EQUAL");
 		}
 	}
 
@@ -133,7 +122,7 @@ public class MemberServiceImpl implements MemberService {
 
 		if (m == null) {
 			// 일치하는 회원이 존재하지 않는다면,
-			throw new NullPointerException("일치하는 회원 정보가 없습니다.");
+			throw new NullPointerException("NOT EXISTS");
 		}
 
 		// 일치하는 회원 존재
@@ -172,7 +161,7 @@ public class MemberServiceImpl implements MemberService {
 		msg.setHeader("Content-Type", "text/html;charset=utf-8"); // 마임 타입
 		msg.setRecipient(Message.RecipientType.TO, toAddress); // 송신자
 		msg.setFrom(fromAddress); // 발신자
-		msg.setSubject("비밀번호 찾기 요청", "utf-8"); // 제목
+		msg.setSubject("Find Pass Request", "utf-8"); // 제목
 		StringBuilder mail = new StringBuilder();
 		mail.append("<!DOCType html>");
 		mail.append("<html>");
@@ -180,9 +169,9 @@ public class MemberServiceImpl implements MemberService {
 		mail.append("<meta charset='utf-8'>");
 		mail.append("</head>");
 		mail.append("<body>");
-		mail.append("<h1 style='text-align:center;'> @@@ PEOPLE.DRIVER 사이트 비밀번호 찾기 @@@ </h1>");
+		mail.append("<h1 style='text-align:center;'> @@@ PEOPLE.DRIVER Site Find Pass @@@ </h1>");
 		mail.append("<div style='text-align:center;'>");
-		mail.append("<p style='font-size:30px;'>인증 코드 번호 : <b>" + pc.getCode() + "</b> </p>");
+		mail.append("<p style='font-size:30px;'>Auth Code : <b>" + pc.getCode() + "</b> </p>");
 		mail.append("</div>");
 		mail.append("</body>");
 		mail.append("</html>");
@@ -191,7 +180,7 @@ public class MemberServiceImpl implements MemberService {
 		msg.setContent(content, "text/html;charset=utf-8");
 		// blocking (메일이 발송될 때 까지)
 		Transport.send(msg);
-		return "메일 발송 성공 메일함을 확인해주세요.";
+		return "Mail Translation Success";
 	}
 
 	@Override
@@ -199,10 +188,10 @@ public class MemberServiceImpl implements MemberService {
 		PassCode pc = cr.findByEmailAndCode(passCode.getEmail(), passCode.getCode());
 		if (pc != null) {
 			// 일치하면
-			return "코드 일치";
+			return "Code Equal";
 		} else {
 			// 일치하지 않으면
-			return "코드 불일치";
+			return "Code Not Equal";
 		}
 	}
 	
@@ -221,48 +210,44 @@ public class MemberServiceImpl implements MemberService {
 		
 		mm.changePass(member);
 
-		return "비밀번호 변경 성공";
+		return "Pass Change Success";
 	}
 
 	@Override
 	@Transactional
 	public String editProfile(EditDTO member, MultipartFile file) throws Exception {
 
-		String message = "회원정보 수정 실패";
-		// 만약 회원 이미지가 변경되었다면, 삭제 후 다시 업로드
+		String message = "Edit Failed";
 		Member mem = mr.findByEmail(member.getEmail());
-		if (mem.getImgUrl() != null) {
-			// 기존 이미지가 있었다면,
-			fu.deleteFile(mem.getFileName());
-		}
+		
+		if (file != null && !file.isEmpty()) {
+			// 만약 회원 이미지가 변경되었다면, 삭제 후 다시 업로드
+			if (mem.getImgUrl() != null) {
+				// 기존 이미지가 있었다면,
+				fu.deleteFile(mem.getFileName());
+			}
 
-		String imgUrl = fu.uploadFile(file);
-		String savedFileName = fu.savedFileName(imgUrl);
-		if (imgUrl != null) {
-			// 회원정보가 잘 수정되었다면,
-			member.setFileName(savedFileName);
-			member.setImgUrl(imgUrl);
+			String imgUrl = fu.uploadFile(file);
+			String savedFileName = fu.savedFileName(imgUrl);
+			if (imgUrl != null) {
+				// 회원정보가 잘 수정되었다면,
+				member.setFileName(savedFileName);
+				member.setImgUrl(imgUrl);
+				mm.editProfile(member);
+				message = "Edit Success";
+			}
+		} else {
+			if (mem.getImgUrl() != null) {
+				// 파일을 바꾸진 않았지만, 기존에 올려둔 이미지가 존재했었다면,
+				member.setImgUrl(mem.getImgUrl());
+				member.setFileName(mem.getFileName());
+				// 기존에 있던 정보를 추가해서
+			}
 			mm.editProfile(member);
-			message = "회원정보 수정 완료";
-		}
 
+			message = "Edit Success";
+		}
 		return message;
-	}
-
-	@Override
-	public String editProfile(EditDTO member) throws Exception {
-
-		Member mem = mr.findByEmail(member.getEmail());
-
-		if (mem.getImgUrl() != null) {
-			// 파일을 바꾸진 않았지만, 기존에 올려둔 이미지가 존재했었다면,
-			member.setImgUrl(mem.getImgUrl());
-			member.setFileName(mem.getFileName());
-			// 기존에 있던 정보를 추가해서
-		}
-		mm.editProfile(member);
-
-		return "수정 완료";
 	}
 
 	@Override
@@ -274,14 +259,14 @@ public class MemberServiceImpl implements MemberService {
 		// 가장 큰 문제점 종속성이 강해진다. (이걸 해결할 수 있는 방안이 있을까?)
 		String message = ds.removeAll(member.getId());
 		
-		if (message.equals("삭제 완료")) {
+		if (message.equals("Remove Success")) {
 			if (member.getImgUrl() != null) {
 				fu.deleteFile(member.getFileName());
 			}
 			mr.deleteByEmail(email);
 		}
 		
-		return "삭제 완료";
+		return "Remove Success";
 	}
 
 	@Override

@@ -35,7 +35,7 @@ public class AuthBusinessInterceptor implements HandlerInterceptor {
 				out = response.getWriter();
 				
 				out.println("<script>");
-				out.println("alert('로그인부터 해주세요.');");
+				out.println("alert('Login Please');");
 				out.println("location.href='"+contextPath+"/user/login'");
 				out.println("</script>");
 				return false;
@@ -50,7 +50,7 @@ public class AuthBusinessInterceptor implements HandlerInterceptor {
 					out = response.getWriter();
 					
 					out.println("<script>");
-					out.println("alert('비즈니스 회원만 접속 가능합니다.');");
+					out.println("alert('Only Business Access Possible');");
 					out.println("history.go(-1)");
 					out.println("</script>");
 					
@@ -68,7 +68,7 @@ public class AuthBusinessInterceptor implements HandlerInterceptor {
 								out = response.getWriter();
 								
 								out.println("<script>");
-								out.println("alert('접속할 수 없는 등록 페이지 정보입니다.');");
+								out.println("alert('You Don't Access His/Her Profile');");
 								out.println("history.go(-1)");
 								out.println("</script>");
 								return false;

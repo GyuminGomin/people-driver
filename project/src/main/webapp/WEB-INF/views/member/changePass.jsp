@@ -51,13 +51,11 @@ function submit() {
 			},
 			dataType : "text",
 			success : function(result) {
-				console.log(result);
-				alert(result);
+				alert("비밀번호 변경 성공");
 				window.location.href="/user/login";
 			},
 			error : function(res) {
-				console.log(res);
-				alert(res.responseText);
+				alert("비밀번호 변경 실패 운영자한테 문의해 주세요.");
 			}
 		});
 	}

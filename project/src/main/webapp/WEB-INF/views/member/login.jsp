@@ -65,8 +65,8 @@
 				},
 				dataType : "text",
 				success : function(result) {
-					if (result === '이메일 또는 비밀번호가 일치하지 않습니다.') {
-						alert(result);
+					if (result === 'NOT EQUAL') {
+						alert("아이디 또는 비밀번호가 일치하지 않습니다.");
 						$("#email").val('');
 						$("#pass").val('');
 						email.focus();

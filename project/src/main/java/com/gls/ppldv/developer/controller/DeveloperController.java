@@ -35,7 +35,7 @@ public class DeveloperController {
 
 		ResponseEntity<String> response = null;
 
-		if (message.equals("등록 성공")) {
+		if (message.equals("Reigster Success")) {
 			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
 		} else {
 			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
@@ -59,7 +59,7 @@ public class DeveloperController {
 
 		ResponseEntity<String> response = null;
 
-		if (message.equals("수정 성공")) {
+		if (message.equals("Edit Success")) {
 			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
 		} else {
 			response = new ResponseEntity<>(message, headers, HttpStatus.OK);

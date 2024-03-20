@@ -317,13 +317,14 @@ function join(){
 			processData : false,
 			dataType : "text",
 			success : function(result) {
-				alert(result);
-				if (result === "아이디 중복입니다. 다시 선택해주세요.") {
+				if (result === "ID Duplicate Retry!") {
+					alert("아이디 중복입니다.");
 					u_id.val('');
 					u_id.focus();
 				} else {
 					// 로그인 화면으로 이동
-					window.location.href= "login";	
+					alert("회원가입 성공");
+					window.location.href= "/user/login";	
 				}
 			},
 			error : function(res) {
@@ -383,18 +384,17 @@ function join(){
 				processData : false,
 				dataType : "text",
 				success : function(result) {
-					alert(result);
-					if (result === "아이디 중복입니다. 다시 선택해주세요.") {
+					if (result === "ID Duplicate Retry!") {
+						alert("아이디 중복입니다.");
 						u_id.val('');
 						u_id.focus();
 					} else {
 						// 로그인 화면으로 이동 redirect
-						window.location.href= "login";	
+						alert("회원가입 성공");
+						window.location.href= "/user/login";
 					}
 				},
-				error : function(res) {
-					alert(res.responseText);
-				}
+				error : function(res) {}
 			});
 		}
 	}

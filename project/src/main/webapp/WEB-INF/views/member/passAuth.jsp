@@ -50,7 +50,7 @@
 				},
 				dataType : "text", 
 				success : function(result) {
-					if (result === '코드 일치') {
+					if (result === 'Code Equal') {
 						alert("코드가 일치합니다. 비밀번호 변경 페이지로 이동합니다.");
 						$("#formSubmit").click();
 					} else {
@@ -59,7 +59,7 @@
 					}
 				},
 				error : function(res) {
-					alert(res.responseText);					
+					alert("인증 실패 운영자한테 문의해주세요.");					
 				}
 			});
 		}

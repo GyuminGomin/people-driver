@@ -321,7 +321,7 @@
 			contentType: false,
 			dataType: "text",
 			success: function(result) {
-				alert(result);
+				alert("수정 성공");
 				window.location.href="/developer/readPage?dno=${param.dno}";
 			},
 			error: function(res) {
@@ -341,7 +341,7 @@
 			},
 			dataType: "text",
 			success: function(result) {
-				alert(result);
+				alert("삭제성공");
 				window.location.href="/developer/profile?id=${loginMember.id}";
 			},
 			error: function(res) {

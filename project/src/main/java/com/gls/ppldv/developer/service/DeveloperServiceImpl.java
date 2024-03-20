@@ -46,7 +46,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 	@Transactional
 	public String register(DeveloperDTO developerDTO, MultipartFile file) throws Exception {
 
-		String message = "등록 실패";
+		String message = "Register Failed";
 
 		// DeveloperDTO에서 Developer 엔티티로 변환
 		Developer developer = new Developer();
@@ -67,7 +67,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 			// 이미지 파일 처리
 			imgUrl = fu.uploadFile(file);
 			if (imgUrl == null) {
-				message = "네트워크 문제로 이미지가 저장되지 않았습니다. 잠시 후 다시 시도해주세요.";
+				message = "Network Problem Wait A Moment Please";
 				return message;
 			}
 			fileName = fu.savedFileName(imgUrl);
@@ -103,7 +103,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 		}
 
 		if (savedDeveloper != null) {
-			message = "등록 성공";
+			message = "Register Success";
 		} else {
 			fu.deleteFile(fileName);
 			return message;
@@ -219,7 +219,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 	@Override
 	@Transactional
 	public String edit(Long dno, DeveloperDTO developerDTO, MultipartFile file) throws Exception {
-		String message = "수정 실패";
+		String message = "Edit Failed";
 		
 		Developer dev = dr.findById(dno).get();
 		
@@ -246,7 +246,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 				// 이미지 파일 처리
 				imgUrl = fu.uploadFile(file);
 				if (imgUrl == null) {
-					message = "네트워크 문제로 이미지가 저장되지 않았습니다. 잠시 후 다시 시도해주세요.";
+					message = "Network Problem Wait A Moment Please";
 					return message;
 				}
 				fileName = fu.savedFileName(imgUrl);
@@ -257,7 +257,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 				fu.deleteFile(dev.getFileName());
 				imgUrl = fu.uploadFile(file);
 				if (imgUrl == null) {
-					message = "네트워크 문제로 이미지가 저장되지 않았습니다. 잠시 후 다시 시도해주세요.";
+					message = "Network Problem Wait A Moment Please";
 					return message;
 				}
 				fileName = fu.savedFileName(imgUrl);
@@ -321,7 +321,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 		}
 
 		if (updateDev != null) {
-			message = "수정 성공";
+			message = "Edit Success";
 		} else {
 			return message;
 		}
@@ -341,7 +341,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 		
 		dr.deleteById(dno);
 		
-		return "삭제 완료";
+		return "Remove Success";
 	}
 
 	@Override
@@ -359,7 +359,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 		
 		dr.deleteAllByMemberId(uno);
 		
-		return "삭제 완료";
+		return "Remove Success";
 	}
 
 	@Override

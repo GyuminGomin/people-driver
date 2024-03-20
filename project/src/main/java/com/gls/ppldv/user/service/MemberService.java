@@ -18,14 +18,6 @@ public interface MemberService extends FindPassService {
 	public String register(Member member, MultipartFile file) throws Exception;
 
 	/**
-	 * 회원 등록(이미지 없이)
-	 *
-	 * @param member - 회원 등록을 위한 객체
-	 * @return - 메세지
-	 */
-	public String register(Member member) throws Exception;
-
-	/**
 	 * 로그인
 	 *
 	 * @param member - 회원 찾기를 위한 객체
@@ -41,14 +33,6 @@ public interface MemberService extends FindPassService {
 	 * @return - 수정 완료 메시지 반환
 	 */
 	public String editProfile(EditDTO member, MultipartFile file) throws Exception;
-
-	/**
-	 * 회원정보 수정 - 이미지 변화 없음
-	 *
-	 * @param member - 회원 정보 받아올 것
-	 * @return - 수정 완료 메시지 반환
-	 */
-	public String editProfile(EditDTO member) throws Exception;
 
 	/**
 	 * 회원 삭제
