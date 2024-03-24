@@ -161,6 +161,30 @@
 <script>
 
 	$(document).ready(function() {
+		if (${!empty param.page}) {
+			$('.firstRow').css({
+	        	display: 'none'
+	        });
+	        $('.secondRow').css({
+	        	display: 'none'
+	        });
+	        $('.thirdRow').css({
+	        	display: 'block'
+	        });
+		} else {
+			$('.firstRow').css({
+	        	display: 'none'
+	        });
+	        $('.secondRow').css({
+	        	display: 'block'
+	        });
+	        $('.thirdRow').css({
+	        	display: 'none'
+	        });
+		}
+	});
+
+	/* $(document).ready(function() {
 		$('.firstRow').css({
         	display: 'none'
         });
@@ -171,7 +195,7 @@
         	display: 'none'
         });
 	});
-
+ */
 	// 탭 버튼 구현
     function showFirstRow() {
         $('.firstRow').css({
