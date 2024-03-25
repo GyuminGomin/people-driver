@@ -18,7 +18,6 @@ import com.gls.ppldv.common.util.CookieUtils;
 import com.gls.ppldv.common.util.FileUtil;
 import com.gls.ppldv.common.util.GmailAuthentication;
 import com.gls.ppldv.configuration.userException.LoginFailedException;
-import com.gls.ppldv.configuration.userException.RegisterFailedException;
 import com.gls.ppldv.developer.service.DeveloperService;
 import com.gls.ppldv.user.dto.EditDTO;
 import com.gls.ppldv.user.dto.LoginDTO;
@@ -55,7 +54,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		// 아이디 중복 체크
 		if (m != null) {
-			throw new RegisterFailedException("ID Duplicate Retry!");
+			return "ID Duplicate Retry!";
 		}
 		
 		if (file != null && !file.isEmpty()) {
@@ -122,7 +121,7 @@ public class MemberServiceImpl implements MemberService {
 
 		if (m == null) {
 			// 일치하는 회원이 존재하지 않는다면,
-			throw new NullPointerException("NOT EXISTS");
+			return "NOT EXISTS";
 		}
 
 		// 일치하는 회원 존재
@@ -252,7 +251,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	@Transactional
-	public String removeUser(String email) throws Exception {
+	public void removeUser(String email) throws Exception {
 		
 		Member member = mr.findByEmail(email);
 		
@@ -265,8 +264,6 @@ public class MemberServiceImpl implements MemberService {
 			}
 			mr.deleteByEmail(email);
 		}
-		
-		return "Remove Success";
 	}
 
 	@Override

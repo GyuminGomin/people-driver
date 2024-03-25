@@ -86,15 +86,9 @@ public class MemberPathController {
 
 	// 회원정보 삭제
 	@PostMapping("/removeUser")
-	public String removeUser(String email, RedirectAttributes rttrs) {
-		String message = null;
-		try {
-			message = ms.removeUser(email);
-		} catch (Exception e) {
-			message = "Remove Failed Try Again!";
-			e.printStackTrace();
-		}
-
+	public String removeUser(String email, RedirectAttributes rttrs) throws Exception{
+		ms.removeUser(email);
+		
 		return "redirect:/user/logout";
 	}
 	

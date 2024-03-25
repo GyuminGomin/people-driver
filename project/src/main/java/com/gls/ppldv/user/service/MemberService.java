@@ -37,7 +37,7 @@ public interface MemberService extends FindPassService {
 	/**
 	 * 회원 삭제
 	 */
-	public String removeUser(String email) throws Exception;
+	public void removeUser(String email) throws Exception;
 
 	/**
 	 * email을 통해 멤버 찾기
