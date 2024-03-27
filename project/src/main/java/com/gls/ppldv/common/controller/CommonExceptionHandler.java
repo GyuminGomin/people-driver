@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.gls.ppldv.configuration.userException.LoginFailedException;
 
-@ControllerAdvice("com.gls.ppldv.user.controller")
+@ControllerAdvice("com.gls.ppldv.*.controller")
 public class CommonExceptionHandler {
 	
 	@ExceptionHandler(Exception.class)

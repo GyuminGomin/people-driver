@@ -1,16 +1,10 @@
 package com.gls.ppldv.developer.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gls.ppldv.common.util.Criteria;
@@ -18,7 +12,6 @@ import com.gls.ppldv.common.util.PageMaker;
 import com.gls.ppldv.common.util.Paging.Cri;
 import com.gls.ppldv.common.util.Paging.PMaker;
 import com.gls.ppldv.developer.dto.DeveloperDTO;
-import com.gls.ppldv.developer.entity.DCareer;
 import com.gls.ppldv.developer.entity.Developer;
 import com.gls.ppldv.developer.service.DeveloperService;
 import com.gls.ppldv.user.entity.Member;
@@ -39,7 +32,7 @@ public class DeveloperPathController {
 	}
 
 	@GetMapping("/profile")
-	public String profile(Long id, Cri cri1, Criteria cri2 , Model model) {
+	public String profile(Long id, Cri cri1, Criteria cri2 , Model model) throws Exception {
 
 		// 현재 회원 정보만
 		Page<Developer> dlist = null;
@@ -47,19 +40,10 @@ public class DeveloperPathController {
 		// 전체 회원 정보들
 		Page<Developer> dlist2 = null;
 		
-		PMaker pm1 = null;
-
-		PageMaker pm2 = null;
-		
-		try {
-			pm1 = ds.getPageMaker(id, cri1);
-			pm2 = ds.getPageMaker(cri2);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		PMaker pm1 = ds.getPageMaker(id, cri1);
+		PageMaker pm2 = ds.getPageMaker(cri2);
 
 		dlist = ds.searchDev(id, cri1);
-		
 		dlist2 = ds.searchDev2(cri2);
 		// Page 객체의 getContent는 List 형태로 바꿔 전송
 
@@ -118,19 +102,12 @@ public class DeveloperPathController {
 	public String search(
 		Criteria cri,
 		Model model
-	) {
+	) throws Exception {
 		// 전체 회원 정보들
-		Page<Developer> dlist = null;
-		PageMaker pm = null;
-		
-		try {
-			pm = ds.getPageMaker(cri);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		dlist = ds.searchDev2(cri);
+		PageMaker pm = ds.getPageMaker(cri);
 		// Page 객체의 getContent는 List 형태로 바꿔 전송
+		Page<Developer> dlist  = ds.searchDev2(cri);
+		
 
 		model.addAttribute("developerAllList", dlist.getContent());
 		model.addAttribute("pm", pm);
@@ -146,18 +123,11 @@ public class DeveloperPathController {
 		Criteria cri,
 		String name,
 		Model model
-	) {
+	) throws Exception {
 		
-		Page<Developer> dlist = null;
-		PageMaker pm = null;
-		
-		try {
-			pm = ds.getPageMaker(name, cri);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		PageMaker pm = ds.getPageMaker(name, cri);
 
-		dlist = ds.searchDev3(name, cri);
+		Page<Developer> dlist = ds.searchDev3(name, cri);
 		
 		model.addAttribute("developerAllList", dlist.getContent());
 		model.addAttribute("pm", pm);

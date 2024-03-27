@@ -67,18 +67,13 @@ public class MemberPathController {
 
 	// 회원정보 수정
 	@PostMapping("/edit")
-	public String editProfile(EditDTO member, MultipartFile file, RedirectAttributes rttrs, HttpSession session) {
+	public String editProfile(EditDTO member, MultipartFile file, RedirectAttributes rttrs, HttpSession session) throws Exception {
 
-		String message = null;
 		// 만약 회원 이미지가 변경되었다면, 삭제 후 다시 업로드
-		try {
-			message = ms.editProfile(member, file);
+		String message = ms.editProfile(member, file);
 
-			Member m = ms.findMember(member.getEmail());
-			session.setAttribute("loginMember", m);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Member m = ms.findMember(member.getEmail());
+		session.setAttribute("loginMember", m);
 
 		rttrs.addFlashAttribute("message", message);
 		return "redirect:/user/editProfile";
@@ -105,5 +100,4 @@ public class MemberPathController {
 		request.setAttribute("email", email);
 		return "/member/changePass";
 	}
-
 }
