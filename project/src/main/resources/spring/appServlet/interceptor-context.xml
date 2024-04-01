@@ -13,8 +13,6 @@
 			<beans:ref bean="checkCookie" />
 		</interceptor>
 		
-		
-		
 		<!-- 토큰 발급 -->
 		<interceptor>
 			<!-- 비밀번호 찾기 페이지에서 passAuth로 요청보내면 아이디 비번 전송시 csrf_token 발급 -->
