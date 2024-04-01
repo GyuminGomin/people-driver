@@ -3,6 +3,7 @@
 Servers/
 target/
 project/src/main/webapp/attach
+project/src/main/resources/log
 
 target/m2e-wtp/
 # aws 키 ignore
