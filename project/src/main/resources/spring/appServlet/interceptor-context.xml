@@ -66,22 +66,6 @@
 				<exclude-mapping path="/business/project" />	
 				<beans:bean class="com.gls.ppldv.common.interceptor.AuthBusinessInterceptor" />		
 		</interceptor>
-		
-		
-		<!-- 모든 데이터의 캐시 저장시간을 0으로 지정 -->
-		<!-- 그냥 이렇게 지정하면 resource가 너무 많아지니깐 -->
-		<!-- 적어도 resource로 들어오는 데이터는 캐시 저장 (86400 하루저장)-->
-		<interceptor>
-			<mapping path="/**" />
-			<beans:bean class="org.springframework.web.servlet.mvc.WebContentInterceptor">
-				<beans:property name="cacheSeconds" value="0" />
-				<beans:property name="cacheMappings">
-					<beans:props>
-						<beans:prop key="/resources/**">86400</beans:prop>
-					</beans:props>
-				</beans:property>
-			</beans:bean>
-		</interceptor>
 	</interceptors>
 
 </beans:beans>

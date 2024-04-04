@@ -92,7 +92,7 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	public Member login(LoginDTO member) throws Exception {
 		
-		Member mem = mr.findByEmail(member.getEmail());
+		Member mem = mr.findByEmail(member.getEmail()).get();
 		
 		String encryptedPassword = mem.getPassword();
 		
@@ -101,7 +101,7 @@ public class MemberServiceImpl implements MemberService {
 		Member m = null;
 		
 		if (decryptedPassword.equals(member.getPassword())) {
-			m = mr.findByEmail(member.getEmail());
+			m = mr.findByEmail(member.getEmail()).get();
 		}
 		
 		if (m != null) {
@@ -217,7 +217,7 @@ public class MemberServiceImpl implements MemberService {
 	public String editProfile(EditDTO member, MultipartFile file) throws Exception {
 
 		String message = "Edit Failed";
-		Member mem = mr.findByEmail(member.getEmail());
+		Member mem = mr.findByEmail(member.getEmail()).get();
 		
 		if (file != null && !file.isEmpty()) {
 			// 만약 회원 이미지가 변경되었다면, 삭제 후 다시 업로드
@@ -253,7 +253,7 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	public void removeUser(String email) throws Exception {
 		
-		Member member = mr.findByEmail(email);
+		Member member = mr.findByEmail(email).get();
 		
 		// 가장 큰 문제점 종속성이 강해진다. (이걸 해결할 수 있는 방안이 있을까?)
 		String message = ds.removeAll(member.getId());
@@ -268,7 +268,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member findMember(String email) throws Exception {
-		Member m = mr.findByEmail(email);
+		Member m = mr.findByEmail(email).get();
 		return m;
 	}
 

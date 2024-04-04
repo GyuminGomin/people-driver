@@ -1,0 +1,319 @@
+2024-04-02 00:00:45.948 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] - Application shutdown requested.
+2024-04-02 00:00:46.320 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.apache.coyote.http11.Http11NioProtocol] - Pausing ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:00:46.320 INFO  [RMI TCP Connection(2)-127.0.0.1] [org.apache.catalina.core.StandardService] - Stopping service [Tomcat]
+2024-04-02 00:00:46.322 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-04-02 00:00:46.325 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.apache.coyote.http11.Http11NioProtocol] - Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:00:46.330 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-02 00:00:46.332 INFO  [RMI TCP Connection(2)-127.0.0.1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2024-04-02 00:00:46.348 INFO  [RMI TCP Connection(2)-127.0.0.1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2024-04-02 00:00:55.767 INFO  [main] [com.gls.ppldv.PpldvApplication] - Starting PpldvApplication using Java 11.0.20 on DESKTOP-9NG7NK6 with PID 13004 (C:\Users\ASUS\Desktop\BITS_project\gls(boot)\project\target\classes started by ASUS in C:\Users\ASUS\Desktop\BITS_project\gls(boot)\project)
+2024-04-02 00:00:55.769 INFO  [main] [com.gls.ppldv.PpldvApplication] - No active profile set, falling back to 1 default profile: "default"
+2024-04-02 00:00:56.199 INFO  [main] [o.s.d.r.c.RepositoryConfigurationDelegate] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-02 00:00:56.260 INFO  [main] [o.s.d.r.c.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 54 ms. Found 5 JPA repository interfaces.
+2024-04-02 00:00:56.749 INFO  [main] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8080 (http)
+2024-04-02 00:00:56.756 INFO  [main] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:00:56.757 INFO  [main] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2024-04-02 00:00:56.757 INFO  [main] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2024-04-02 00:00:56.983 INFO  [main] [org.apache.jasper.servlet.TldScanner] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-02 00:00:56.998 INFO  [main] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2024-04-02 00:00:56.998 INFO  [main] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1202 ms
+2024-04-02 00:00:57.142 INFO  [main] [o.hibernate.jpa.internal.util.LogHelper] - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-02 00:00:57.185 INFO  [main] [org.hibernate.Version] - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-04-02 00:00:57.319 INFO  [main] [org.hibernate.annotations.common.Version] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-02 00:00:57.408 WARN  [main] [com.zaxxer.hikari.HikariConfig] - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-04-02 00:00:57.409 INFO  [main] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2024-04-02 00:00:57.638 INFO  [main] [com.zaxxer.hikari.pool.HikariPool] - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@36d7a68a
+2024-04-02 00:00:57.640 INFO  [main] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2024-04-02 00:00:57.666 INFO  [main] [org.hibernate.dialect.Dialect] - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-04-02 00:00:58.927 INFO  [main] [o.h.e.t.j.p.i.JtaPlatformInitiator] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-02 00:00:58.937 INFO  [main] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-02 00:00:59.912 WARN  [main] [o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-02 00:01:00.245 INFO  [main] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:01:00.268 INFO  [main] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8080 (http) with context path ''
+2024-04-02 00:01:00.274 INFO  [main] [com.gls.ppldv.PpldvApplication] - Started PpldvApplication in 4.821 seconds (JVM running for 5.702)
+2024-04-02 00:01:00.331 INFO  [http-nio-8080-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-02 00:01:00.332 INFO  [http-nio-8080-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2024-04-02 00:01:00.333 INFO  [http-nio-8080-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 1 ms
+2024-04-02 00:01:01.321 WARN  [http-nio-8080-exec-1] [o.a.catalina.util.SessionIdGeneratorBase] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [408] milliseconds.
+2024-04-02 00:01:01.593 WARN  [http-nio-8080-exec-6] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/logo/logo2.png
+2024-04-02 00:01:01.593 WARN  [http-nio-8080-exec-2] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/css/common/home.css
+2024-04-02 00:01:01.593 WARN  [http-nio-8080-exec-4] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/css/common/header.css
+2024-04-02 00:01:01.593 WARN  [http-nio-8080-exec-3] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/css/common.css
+2024-04-02 00:01:01.593 WARN  [http-nio-8080-exec-5] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/logo/logo.png
+2024-04-02 00:01:01.639 WARN  [http-nio-8080-exec-8] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/JobAlert.gif
+2024-04-02 00:01:01.639 WARN  [http-nio-8080-exec-7] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/hire.gif
+2024-04-02 00:01:01.646 WARN  [http-nio-8080-exec-10] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/meeting.gif
+2024-04-02 00:01:01.646 WARN  [http-nio-8080-exec-9] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/boom.gif
+2024-04-02 00:01:01.659 WARN  [http-nio-8080-exec-3] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/alien.gif
+2024-04-02 00:01:01.659 WARN  [http-nio-8080-exec-1] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/world.gif
+2024-04-02 00:01:01.680 WARN  [http-nio-8080-exec-5] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/discription/manager.png
+2024-04-02 00:01:01.680 WARN  [http-nio-8080-exec-2] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/discription/coin.png
+2024-04-02 00:01:01.680 WARN  [http-nio-8080-exec-4] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/discription/auth.png
+2024-04-02 00:01:01.680 WARN  [http-nio-8080-exec-6] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/space.gif
+2024-04-02 00:01:01.693 WARN  [http-nio-8080-exec-7] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/logo/logo.png
+2024-04-02 00:01:01.702 WARN  [http-nio-8080-exec-8] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/DB.jpg
+2024-04-02 00:01:01.703 WARN  [http-nio-8080-exec-9] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/KG.jpg
+2024-04-02 00:01:01.704 WARN  [http-nio-8080-exec-10] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EA%B5%90%EB%B3%B4%EC%83%9D%EB%AA%85%EB%B3%B4%ED%97%98.jpg
+2024-04-02 00:01:01.704 WARN  [http-nio-8080-exec-1] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%84%A5%EC%8A%A8.png
+2024-04-02 00:01:01.704 WARN  [http-nio-8080-exec-3] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EA%B8%88%ED%98%B8%EC%95%84%EC%8B%9C%EC%95%84%EB%82%98.png
+2024-04-02 00:01:01.706 WARN  [http-nio-8080-exec-2] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%84%B7%EB%A7%88%EB%B8%94.jpg
+2024-04-02 00:01:01.711 WARN  [http-nio-8080-exec-6] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%91%90%EC%82%B0.jpg
+2024-04-02 00:01:01.712 WARN  [http-nio-8080-exec-4] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%84%A4%EC%9D%B4%EB%B2%84.png
+2024-04-02 00:01:01.712 WARN  [http-nio-8080-exec-5] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%86%8D%ED%98%91.png
+2024-04-02 00:01:01.712 WARN  [http-nio-8080-exec-7] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%A1%AF%EB%8D%B0.png
+2024-04-02 00:01:01.712 WARN  [http-nio-8080-exec-9] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%82%BC%EC%84%B1.png
+2024-04-02 00:01:01.713 WARN  [http-nio-8080-exec-8] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%82%BC%EC%B2%9C%EB%A6%AC.jpg
+2024-04-02 00:01:01.721 WARN  [http-nio-8080-exec-1] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%94%A8%EC%A0%9C%EC%9D%B4.jpg
+2024-04-02 00:01:01.721 WARN  [http-nio-8080-exec-10] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%97%90%EC%8A%A4%EC%BC%80%EC%9D%B4.png
+2024-04-02 00:01:01.721 WARN  [http-nio-8080-exec-3] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%8B%A0%EC%84%B8%EA%B3%84.png
+2024-04-02 00:01:01.721 WARN  [http-nio-8080-exec-7] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%9C%A0%EC%A7%84.png
+2024-04-02 00:01:01.721 WARN  [http-nio-8080-exec-2] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%97%98%EC%97%90%EC%8A%A4.png
+2024-04-02 00:01:01.721 WARN  [http-nio-8080-exec-6] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%9E%A5%EA%B8%88%EC%83%81%EC%84%A0.png
+2024-04-02 00:01:01.745 WARN  [http-nio-8080-exec-4] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%ED%95%9C%ED%99%94.png
+2024-04-02 00:01:01.747 WARN  [http-nio-8080-exec-5] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%ED%98%84%EB%8C%80%EC%9E%90%EB%8F%99%EC%B0%A8.jpg
+2024-04-02 00:10:12.568 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] - Application shutdown requested.
+2024-04-02 00:10:12.931 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.apache.coyote.http11.Http11NioProtocol] - Pausing ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:10:12.931 INFO  [RMI TCP Connection(2)-127.0.0.1] [org.apache.catalina.core.StandardService] - Stopping service [Tomcat]
+2024-04-02 00:10:12.933 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-04-02 00:10:12.936 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.apache.coyote.http11.Http11NioProtocol] - Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:10:12.940 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-02 00:10:12.942 INFO  [RMI TCP Connection(2)-127.0.0.1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2024-04-02 00:10:12.959 INFO  [RMI TCP Connection(2)-127.0.0.1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2024-04-02 00:10:33.826 INFO  [main] [com.gls.ppldv.PpldvApplication] - Starting PpldvApplication using Java 11.0.20 on DESKTOP-9NG7NK6 with PID 10088 (C:\Users\ASUS\Desktop\BITS_project\gls(boot)\project\target\classes started by ASUS in C:\Users\ASUS\Desktop\BITS_project\gls(boot)\project)
+2024-04-02 00:10:33.829 INFO  [main] [com.gls.ppldv.PpldvApplication] - No active profile set, falling back to 1 default profile: "default"
+2024-04-02 00:10:34.282 INFO  [main] [o.s.d.r.c.RepositoryConfigurationDelegate] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-02 00:10:34.345 INFO  [main] [o.s.d.r.c.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 56 ms. Found 5 JPA repository interfaces.
+2024-04-02 00:10:34.836 INFO  [main] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8080 (http)
+2024-04-02 00:10:34.843 INFO  [main] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:10:34.844 INFO  [main] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2024-04-02 00:10:34.844 INFO  [main] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2024-04-02 00:10:35.099 INFO  [main] [org.apache.jasper.servlet.TldScanner] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-02 00:10:35.119 INFO  [main] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2024-04-02 00:10:35.119 INFO  [main] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1254 ms
+2024-04-02 00:10:35.283 INFO  [main] [o.hibernate.jpa.internal.util.LogHelper] - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-02 00:10:35.327 INFO  [main] [org.hibernate.Version] - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-04-02 00:10:35.474 INFO  [main] [org.hibernate.annotations.common.Version] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-02 00:10:35.561 WARN  [main] [com.zaxxer.hikari.HikariConfig] - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-04-02 00:10:35.562 INFO  [main] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2024-04-02 00:10:35.796 INFO  [main] [com.zaxxer.hikari.pool.HikariPool] - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@36d7a68a
+2024-04-02 00:10:35.798 INFO  [main] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2024-04-02 00:10:35.822 INFO  [main] [org.hibernate.dialect.Dialect] - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-04-02 00:10:36.977 INFO  [main] [o.h.e.t.j.p.i.JtaPlatformInitiator] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-02 00:10:36.985 INFO  [main] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-02 00:10:37.936 WARN  [main] [o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-02 00:10:38.247 INFO  [main] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:10:38.270 INFO  [main] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8080 (http) with context path ''
+2024-04-02 00:10:38.276 INFO  [main] [com.gls.ppldv.PpldvApplication] - Started PpldvApplication in 4.765 seconds (JVM running for 5.663)
+2024-04-02 00:10:38.535 INFO  [http-nio-8080-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-02 00:10:38.535 INFO  [http-nio-8080-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2024-04-02 00:10:38.536 INFO  [http-nio-8080-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 1 ms
+2024-04-02 00:10:39.533 WARN  [http-nio-8080-exec-1] [o.a.catalina.util.SessionIdGeneratorBase] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [422] milliseconds.
+2024-04-02 00:10:39.770 WARN  [http-nio-8080-exec-6] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/logo/logo2.png
+2024-04-02 00:10:39.770 WARN  [http-nio-8080-exec-3] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/css/common.css
+2024-04-02 00:10:39.770 WARN  [http-nio-8080-exec-2] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/css/common/home.css
+2024-04-02 00:10:39.770 WARN  [http-nio-8080-exec-5] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/logo/logo.png
+2024-04-02 00:10:39.770 WARN  [http-nio-8080-exec-4] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/css/common/header.css
+2024-04-02 00:10:39.822 WARN  [http-nio-8080-exec-7] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/hire.gif
+2024-04-02 00:10:39.822 WARN  [http-nio-8080-exec-8] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/JobAlert.gif
+2024-04-02 00:10:39.833 WARN  [http-nio-8080-exec-9] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/boom.gif
+2024-04-02 00:10:39.846 WARN  [http-nio-8080-exec-10] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/meeting.gif
+2024-04-02 00:10:39.852 WARN  [http-nio-8080-exec-1] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/world.gif
+2024-04-02 00:10:39.860 WARN  [http-nio-8080-exec-4] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/alien.gif
+2024-04-02 00:10:39.866 WARN  [http-nio-8080-exec-6] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/adv/space.gif
+2024-04-02 00:10:39.871 WARN  [http-nio-8080-exec-5] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/discription/coin.png
+2024-04-02 00:10:39.881 WARN  [http-nio-8080-exec-2] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/discription/manager.png
+2024-04-02 00:10:39.887 WARN  [http-nio-8080-exec-3] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/discription/auth.png
+2024-04-02 00:10:40.049 WARN  [http-nio-8080-exec-7] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/logo/logo.png
+2024-04-02 00:10:40.058 WARN  [http-nio-8080-exec-8] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/DB.jpg
+2024-04-02 00:10:40.058 WARN  [http-nio-8080-exec-9] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/KG.jpg
+2024-04-02 00:10:40.059 WARN  [http-nio-8080-exec-10] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EA%B5%90%EB%B3%B4%EC%83%9D%EB%AA%85%EB%B3%B4%ED%97%98.jpg
+2024-04-02 00:10:40.059 WARN  [http-nio-8080-exec-1] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EA%B8%88%ED%98%B8%EC%95%84%EC%8B%9C%EC%95%84%EB%82%98.png
+2024-04-02 00:10:40.060 WARN  [http-nio-8080-exec-4] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%84%A5%EC%8A%A8.png
+2024-04-02 00:10:40.062 WARN  [http-nio-8080-exec-6] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%84%B7%EB%A7%88%EB%B8%94.jpg
+2024-04-02 00:10:40.065 WARN  [http-nio-8080-exec-5] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%84%A4%EC%9D%B4%EB%B2%84.png
+2024-04-02 00:10:40.065 WARN  [http-nio-8080-exec-2] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%86%8D%ED%98%91.png
+2024-04-02 00:10:40.065 WARN  [http-nio-8080-exec-3] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%91%90%EC%82%B0.jpg
+2024-04-02 00:10:40.065 WARN  [http-nio-8080-exec-7] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EB%A1%AF%EB%8D%B0.png
+2024-04-02 00:10:40.066 WARN  [http-nio-8080-exec-9] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%82%BC%EC%84%B1.png
+2024-04-02 00:10:40.067 WARN  [http-nio-8080-exec-8] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%82%BC%EC%B2%9C%EB%A6%AC.jpg
+2024-04-02 00:10:40.072 WARN  [http-nio-8080-exec-1] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%8B%A0%EC%84%B8%EA%B3%84.png
+2024-04-02 00:10:40.073 WARN  [http-nio-8080-exec-6] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%97%98%EC%97%90%EC%8A%A4.png
+2024-04-02 00:10:40.073 WARN  [http-nio-8080-exec-10] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%94%A8%EC%A0%9C%EC%9D%B4.jpg
+2024-04-02 00:10:40.073 WARN  [http-nio-8080-exec-4] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%97%90%EC%8A%A4%EC%BC%80%EC%9D%B4.png
+2024-04-02 00:10:40.074 WARN  [http-nio-8080-exec-5] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%9C%A0%EC%A7%84.png
+2024-04-02 00:10:40.074 WARN  [http-nio-8080-exec-2] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%EC%9E%A5%EA%B8%88%EC%83%81%EC%84%A0.png
+2024-04-02 00:10:40.078 WARN  [http-nio-8080-exec-3] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%ED%98%84%EB%8C%80%EC%9E%90%EB%8F%99%EC%B0%A8.jpg
+2024-04-02 00:10:40.083 WARN  [http-nio-8080-exec-7] [o.s.web.servlet.PageNotFound] - No mapping for GET /resources/img/home/affiliate/logos/%ED%95%9C%ED%99%94.png
+2024-04-02 00:14:12.526 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] - Application shutdown requested.
+2024-04-02 00:14:12.926 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.apache.coyote.http11.Http11NioProtocol] - Pausing ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:14:12.927 INFO  [RMI TCP Connection(2)-127.0.0.1] [org.apache.catalina.core.StandardService] - Stopping service [Tomcat]
+2024-04-02 00:14:12.929 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-04-02 00:14:12.932 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.apache.coyote.http11.Http11NioProtocol] - Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:14:12.938 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-02 00:14:12.941 INFO  [RMI TCP Connection(2)-127.0.0.1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2024-04-02 00:14:12.959 INFO  [RMI TCP Connection(2)-127.0.0.1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2024-04-02 00:16:41.772 INFO  [main] [com.gls.ppldv.PpldvApplication] - Starting PpldvApplication using Java 11.0.20 on DESKTOP-9NG7NK6 with PID 28912 (C:\Users\ASUS\Desktop\BITS_project\gls(boot)\project\target\classes started by ASUS in C:\Users\ASUS\Desktop\BITS_project\gls(boot)\project)
+2024-04-02 00:16:41.774 INFO  [main] [com.gls.ppldv.PpldvApplication] - No active profile set, falling back to 1 default profile: "default"
+2024-04-02 00:16:42.228 INFO  [main] [o.s.d.r.c.RepositoryConfigurationDelegate] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-02 00:16:42.302 INFO  [main] [o.s.d.r.c.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 66 ms. Found 5 JPA repository interfaces.
+2024-04-02 00:16:42.820 INFO  [main] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8080 (http)
+2024-04-02 00:16:42.827 INFO  [main] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:16:42.828 INFO  [main] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2024-04-02 00:16:42.828 INFO  [main] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2024-04-02 00:16:43.068 INFO  [main] [org.apache.jasper.servlet.TldScanner] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-02 00:16:43.084 INFO  [main] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2024-04-02 00:16:43.084 INFO  [main] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1282 ms
+2024-04-02 00:16:43.246 INFO  [main] [o.hibernate.jpa.internal.util.LogHelper] - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-02 00:16:43.299 INFO  [main] [org.hibernate.Version] - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-04-02 00:16:43.453 INFO  [main] [org.hibernate.annotations.common.Version] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-02 00:16:43.551 WARN  [main] [com.zaxxer.hikari.HikariConfig] - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-04-02 00:16:43.553 INFO  [main] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2024-04-02 00:16:43.792 INFO  [main] [com.zaxxer.hikari.pool.HikariPool] - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@f591271
+2024-04-02 00:16:43.794 INFO  [main] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2024-04-02 00:16:43.820 INFO  [main] [org.hibernate.dialect.Dialect] - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-04-02 00:16:45.053 INFO  [main] [o.h.e.t.j.p.i.JtaPlatformInitiator] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-02 00:16:45.062 INFO  [main] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-02 00:16:46.093 WARN  [main] [o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-02 00:16:46.401 INFO  [main] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:16:46.420 INFO  [main] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8080 (http) with context path ''
+2024-04-02 00:16:46.426 INFO  [main] [com.gls.ppldv.PpldvApplication] - Started PpldvApplication in 4.985 seconds (JVM running for 5.9)
+2024-04-02 00:16:46.574 INFO  [http-nio-8080-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-02 00:16:46.574 INFO  [http-nio-8080-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2024-04-02 00:16:46.575 INFO  [http-nio-8080-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 1 ms
+2024-04-02 00:16:47.572 WARN  [http-nio-8080-exec-1] [o.a.catalina.util.SessionIdGeneratorBase] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [409] milliseconds.
+2024-04-02 00:18:54.566 INFO  [http-nio-8080-exec-1] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:18:54.566 INFO  [http-nio-8080-exec-1] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:18:54.566 INFO  [http-nio-8080-exec-1] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.user.service.MemberServiceImpl@b22bebc
+2024-04-02 00:18:54.566 INFO  [http-nio-8080-exec-1] [com.gls.ppldv.common.aop.AOPAdvice] - name : register
+2024-04-02 00:18:54.567 INFO  [http-nio-8080-exec-1] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [Member(id=null, name=김규, email=test1@test1.com, password=a1111111, birth=Fri Apr 12 00:00:00 KST 2024, phoneNo=01063514894, pc5=52504, address=경상남도 사천시 곤양면 성내로 5-1, detail=test, role=DEVELOPER, gender=MALE, bname=null, bpc5=null, baddress=null, bdetail=null, bphone=null, imgUrl=null, fileName=null), null]
+2024-04-02 00:18:54.653 INFO  [http-nio-8080-exec-1] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : Register Success
+2024-04-02 00:18:54.653 INFO  [http-nio-8080-exec-1] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:18:54.653 INFO  [http-nio-8080-exec-1] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:00.922 INFO  [http-nio-8080-exec-9] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:00.922 INFO  [http-nio-8080-exec-9] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:19:00.922 INFO  [http-nio-8080-exec-9] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.user.service.MemberServiceImpl@b22bebc
+2024-04-02 00:19:00.922 INFO  [http-nio-8080-exec-9] [com.gls.ppldv.common.aop.AOPAdvice] - name : login
+2024-04-02 00:19:00.922 INFO  [http-nio-8080-exec-9] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [LoginDTO(email=test1@test1.com, password=a1111111, checked=true)]
+2024-04-02 00:19:00.958 INFO  [http-nio-8080-exec-9] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : Member(id=1, name=김규, email=test1@test1.com, password=5nCvlbgmFobgHgo5nxJ2dA==, birth=2024-04-12 00:00:00.0, phoneNo=01063514894, pc5=52504, address=경상남도 사천시 곤양면 성내로 5-1, detail=test, role=DEVELOPER, gender=MALE, bname=null, bpc5=null, baddress=null, bdetail=null, bphone=null, imgUrl=null, fileName=null)
+2024-04-02 00:19:00.958 INFO  [http-nio-8080-exec-9] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:19:00.958 INFO  [http-nio-8080-exec-9] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:05.433 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:05.433 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:19:05.433 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:19:05.433 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - name : getPageMaker
+2024-04-02 00:19:05.433 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [1, Cri(page1=1, perPageNum1=5)]
+2024-04-02 00:19:05.466 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : PMaker(totalCount=0, startPage=1, endPage=0, maxPage=0, displayPageNum=5, first=false, last=true, prev=false, next=false, cri=Cri(page1=1, perPageNum1=5))
+2024-04-02 00:19:05.467 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:19:05.467 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:05.467 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:05.467 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:19:05.467 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:19:05.467 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - name : getPageMaker
+2024-04-02 00:19:05.467 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [Criteria(page=1, perPageNum=10)]
+2024-04-02 00:19:05.472 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : PageMaker(totalCount=0, startPage=1, endPage=0, maxPage=0, displayPageNum=5, first=false, last=true, prev=false, next=false, cri=Criteria(page=1, perPageNum=10))
+2024-04-02 00:19:05.472 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:19:05.472 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:05.473 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:05.473 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:19:05.473 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:19:05.473 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - name : searchDev
+2024-04-02 00:19:05.473 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [1, Cri(page1=1, perPageNum1=5)]
+2024-04-02 00:19:05.483 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : Page 1 of 0 containing UNKNOWN instances
+2024-04-02 00:19:05.484 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:19:05.484 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:05.486 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:19:05.486 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:19:05.486 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:19:05.486 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - name : searchDev2
+2024-04-02 00:19:05.486 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [Criteria(page=1, perPageNum=10)]
+2024-04-02 00:19:05.490 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : Page 1 of 0 containing UNKNOWN instances
+2024-04-02 00:19:05.490 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:19:05.490 INFO  [http-nio-8080-exec-2] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:27.837 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:27.837 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:27.837 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:27.837 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - name : getPageMaker
+2024-04-02 00:20:27.838 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [1, Cri(page1=1, perPageNum1=5)]
+2024-04-02 00:20:27.843 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : PMaker(totalCount=0, startPage=1, endPage=0, maxPage=0, displayPageNum=5, first=false, last=true, prev=false, next=false, cri=Cri(page1=1, perPageNum1=5))
+2024-04-02 00:20:27.844 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:27.844 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:27.844 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:27.844 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:27.844 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:27.844 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - name : getPageMaker
+2024-04-02 00:20:27.844 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [Criteria(page=1, perPageNum=10)]
+2024-04-02 00:20:27.847 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : PageMaker(totalCount=0, startPage=1, endPage=0, maxPage=0, displayPageNum=5, first=false, last=true, prev=false, next=false, cri=Criteria(page=1, perPageNum=10))
+2024-04-02 00:20:27.847 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:27.847 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:27.847 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:27.848 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:27.848 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:27.848 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - name : searchDev
+2024-04-02 00:20:27.848 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [1, Cri(page1=1, perPageNum1=5)]
+2024-04-02 00:20:27.850 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : Page 1 of 0 containing UNKNOWN instances
+2024-04-02 00:20:27.851 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:27.851 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:27.851 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:27.851 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:27.851 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:27.851 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - name : searchDev2
+2024-04-02 00:20:27.851 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [Criteria(page=1, perPageNum=10)]
+2024-04-02 00:20:27.853 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : Page 1 of 0 containing UNKNOWN instances
+2024-04-02 00:20:27.853 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:27.853 INFO  [http-nio-8080-exec-7] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:32.645 INFO  [http-nio-8080-exec-4] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:32.645 INFO  [http-nio-8080-exec-4] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:32.645 INFO  [http-nio-8080-exec-4] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:32.645 INFO  [http-nio-8080-exec-4] [com.gls.ppldv.common.aop.AOPAdvice] - name : register
+2024-04-02 00:20:32.645 INFO  [http-nio-8080-exec-4] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [DeveloperDTO(title=TEST, content=t, skill=, tendency=FRONT, school=, uno=1, imgUrl=null, fileName=null, dCareer=[DCareer(id=null, developer=null, jobName=, jobPeriod=, jobResponsibilities=), DCareer(id=null, developer=null, jobName=, jobPeriod=, jobResponsibilities=), DCareer(id=null, developer=null, jobName=, jobPeriod=, jobResponsibilities=)], dLicense=[DLicense(id=null, developer=null, licenseName=, acquisitionDate=), DLicense(id=null, developer=null, licenseName=, acquisitionDate=), DLicense(id=null, developer=null, licenseName=, acquisitionDate=)], flag=false), null]
+2024-04-02 00:20:32.652 INFO  [http-nio-8080-exec-4] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : Register Success
+2024-04-02 00:20:32.652 INFO  [http-nio-8080-exec-4] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:32.652 INFO  [http-nio-8080-exec-4] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:33.668 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:33.668 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:33.668 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:33.668 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - name : getPageMaker
+2024-04-02 00:20:33.668 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [1, Cri(page1=1, perPageNum1=5)]
+2024-04-02 00:20:33.673 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : PMaker(totalCount=1, startPage=1, endPage=1, maxPage=1, displayPageNum=5, first=false, last=false, prev=false, next=false, cri=Cri(page1=1, perPageNum1=5))
+2024-04-02 00:20:33.673 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:33.673 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:33.673 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:33.673 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:33.673 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:33.673 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - name : getPageMaker
+2024-04-02 00:20:33.673 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [Criteria(page=1, perPageNum=10)]
+2024-04-02 00:20:33.676 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : PageMaker(totalCount=1, startPage=1, endPage=1, maxPage=1, displayPageNum=5, first=false, last=false, prev=false, next=false, cri=Criteria(page=1, perPageNum=10))
+2024-04-02 00:20:33.677 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:33.677 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:33.678 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:33.678 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:33.678 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:33.678 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - name : searchDev
+2024-04-02 00:20:33.678 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [1, Cri(page1=1, perPageNum1=5)]
+2024-04-02 00:20:33.682 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : Page 1 of 1 containing com.gls.ppldv.developer.entity.Developer instances
+2024-04-02 00:20:33.682 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:33.682 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:33.683 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:33.683 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:33.683 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:33.683 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - name : searchDev2
+2024-04-02 00:20:33.683 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [Criteria(page=1, perPageNum=10)]
+2024-04-02 00:20:33.685 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : Page 1 of 1 containing com.gls.ppldv.developer.entity.Developer instances
+2024-04-02 00:20:33.685 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:33.685 INFO  [http-nio-8080-exec-8] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:36.036 INFO  [http-nio-8080-exec-6] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:20:36.036 INFO  [http-nio-8080-exec-6] [com.gls.ppldv.common.aop.AOPAdvice] - ------------ AROUND START --------------
+2024-04-02 00:20:36.036 INFO  [http-nio-8080-exec-6] [com.gls.ppldv.common.aop.AOPAdvice] - target : com.gls.ppldv.developer.service.DeveloperServiceImpl@2e53f980
+2024-04-02 00:20:36.036 INFO  [http-nio-8080-exec-6] [com.gls.ppldv.common.aop.AOPAdvice] - name : searchDev
+2024-04-02 00:20:36.036 INFO  [http-nio-8080-exec-6] [com.gls.ppldv.common.aop.AOPAdvice] - parameter : [1]
+2024-04-02 00:20:36.050 INFO  [http-nio-8080-exec-6] [com.gls.ppldv.common.aop.AOPAdvice] - around AFTER : DeveloperDTO(title=TEST, content=t, skill=, tendency=FRONT, school=, uno=1, imgUrl=null, fileName=null, dCareer=[], dLicense=[], flag=false)
+2024-04-02 00:20:36.050 INFO  [http-nio-8080-exec-6] [com.gls.ppldv.common.aop.AOPAdvice] - -------------- AROUND END --------------
+2024-04-02 00:20:36.050 INFO  [http-nio-8080-exec-6] [com.gls.ppldv.common.aop.AOPAdvice] - ========================================
+2024-04-02 00:22:51.301 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] - Application shutdown requested.
+2024-04-02 00:22:51.691 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.apache.coyote.http11.Http11NioProtocol] - Pausing ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:22:51.691 INFO  [RMI TCP Connection(2)-127.0.0.1] [org.apache.catalina.core.StandardService] - Stopping service [Tomcat]
+2024-04-02 00:22:51.693 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-04-02 00:22:51.696 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.apache.coyote.http11.Http11NioProtocol] - Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-02 00:22:51.701 INFO  [RMI TCP Connection(2)-127.0.0.1] [o.s.o.j.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-02 00:22:51.703 INFO  [RMI TCP Connection(2)-127.0.0.1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2024-04-02 00:22:51.719 INFO  [RMI TCP Connection(2)-127.0.0.1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.

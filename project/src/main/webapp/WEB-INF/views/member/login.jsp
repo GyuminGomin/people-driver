@@ -7,6 +7,7 @@
 
 <c:set var="content">
 	<section>
+	<input type="hidden" id="_csrf" value="${_csrf.token}"/>
 	<div class="login" id="login">
 		<h1 class="login_title">로그인</h1>
 		<div class="loginForm">
@@ -40,6 +41,7 @@
 		let email = $("#email");
 		let pass = $("#pass");
 		let chkLogin = $("#loginSession");
+		let csrf = $("#_csrf");
 		
 		// 정규식
 		var regexEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; // 정규표현식 이메일
@@ -61,24 +63,20 @@
 				data :{
 					email : $("#email").val(),
 					password :  $("#pass").val(),
-					checked : $("#loginSession").is(":checked")
+					checked : $("#loginSession").is(":checked"),
+					${_csrf.parameterName} : csrf.val()
 				},
 				dataType : "text",
 				success : function(result) {
-					if (result === 'NOT EQUAL') {
+					alert(" 회원 로그인 성공");
+				},
+				error : function(res) {
+					if (res.responseText === 'Not Exist') {
 						alert("아이디 또는 비밀번호가 일치하지 않습니다.");
 						$("#email").val('');
 						$("#pass").val('');
-						email.focus();
-					} else {
-						var data = JSON.parse(result); // result를 객체로 파싱
-						alert(data.name + " 회원 로그인 성공");
-						// 로그인 완료 시 홈으로 이동
-						window.location.href="/";
+						email.focus();							
 					}
-				},
-				error : function(res) {
-					alert(res.responseText);
 				}
 			});
 		}

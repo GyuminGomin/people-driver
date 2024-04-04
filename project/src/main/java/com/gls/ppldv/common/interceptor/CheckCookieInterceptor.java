@@ -36,7 +36,7 @@ public class CheckCookieInterceptor implements HandlerInterceptor {
 		if (cookie != null) {
 			String email = cookie.getValue();
 			String decryptedEmail = CookieUtils.decrypt(email);
-			Member member = mr.findByEmail(decryptedEmail);
+			Member member = mr.findByEmail(decryptedEmail).get();
 			session.setAttribute("loginMember", member);
 		}
 

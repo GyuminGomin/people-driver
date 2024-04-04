@@ -43,6 +43,7 @@ public class MemberController {
 		return new ResponseEntity<>(message, headers, HttpStatus.OK);
 	}
 
+	/*
 	// 로그인 처리
 	@PostMapping("/login")
 	public ResponseEntity<Object> login(LoginDTO member,
@@ -64,6 +65,7 @@ public class MemberController {
 
 		return new ResponseEntity<>(m, headers, HttpStatus.OK);
 	}
+	*/
 
 	// 비밀번호 찾기 처리
 	@PostMapping("/find")

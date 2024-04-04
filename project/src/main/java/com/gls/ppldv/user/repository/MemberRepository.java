@@ -1,5 +1,7 @@
 package com.gls.ppldv.user.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +16,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	 * @param email - 복호화된 이메일
 	 * @return - 존재하는 회원 반환
 	 */
-	Member findByEmail(String email);
+	Optional<Member> findByEmail(String email);
 
 	/**
 	 * 아이디 이름 일치하는 회원 찾기
