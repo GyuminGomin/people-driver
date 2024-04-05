@@ -7,7 +7,6 @@
 
 <c:set var="content">
 	<section>
-	<input type="hidden" id="_csrf" value="${_csrf.token}"/>
 	<div class="login" id="login">
 		<h1 class="login_title">로그인</h1>
 		<div class="loginForm">
@@ -41,7 +40,6 @@
 		let email = $("#email");
 		let pass = $("#pass");
 		let chkLogin = $("#loginSession");
-		let csrf = $("#_csrf");
 		
 		// 정규식
 		var regexEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; // 정규표현식 이메일
@@ -64,18 +62,23 @@
 					email : $("#email").val(),
 					password :  $("#pass").val(),
 					checked : $("#loginSession").is(":checked"),
-					${_csrf.parameterName} : csrf.val()
+					${_csrf.parameterName} : '${_csrf.token}'
 				},
 				dataType : "text",
 				success : function(result) {
 					alert(" 회원 로그인 성공");
+					location.href="/";
 				},
 				error : function(res) {
 					if (res.responseText === 'Not Exist') {
 						alert("아이디 또는 비밀번호가 일치하지 않습니다.");
 						$("#email").val('');
 						$("#pass").val('');
-						email.focus();							
+						email.focus();
+					} else if (res.responseText === 'csrf') {
+						alert("잘못된 접근방식 입니다.");
+					} else {
+						alert("알 수 없는 이유로 로그인에 실패하였습니다. 관리자에게 문의해 주세요.");
 					}
 				}
 			});

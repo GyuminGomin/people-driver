@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +21,6 @@ import com.gls.ppldv.user.entity.Member;
 @Configuration
 public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 
-	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
@@ -30,11 +29,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		
 		Member member = userDetail.getMember();
 		
-		// 로그인 성공 시 처리할 로직 담당
-		response.sendRedirect("/user/login?");
-		String root = request.getContextPath();
-		response.sendRedirect(root);
-		
+		// 회원 정보 session에 저장
+		HttpSession session = request.getSession();
+		session.setAttribute("loginMember", member);
 	}
 	
 	

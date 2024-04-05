@@ -47,7 +47,7 @@ public class MemberPathController {
 	
 	// 로그아웃 처리
 	@GetMapping("/logout")
-	public String logout(HttpServletResponse response, @CookieValue(name = "id", required = false) Cookie cookie,
+	public String logout(HttpServletResponse response, @CookieValue(name = "Id", required = false) Cookie cookie,
 			HttpSession session, RedirectAttributes rttrs) {
 		session.removeAttribute("loginMember");
 

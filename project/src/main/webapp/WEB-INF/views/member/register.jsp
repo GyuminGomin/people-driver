@@ -303,7 +303,8 @@ function join(){
 				address : address.val(),
 				detail : detail.val(),
 				role : role.val(),
-				gender : gender.val()	
+				gender : gender.val(),
+				${_csrf.parameterName} : '${_csrf.token}'
 		};
 		// 나머지 데이터도 FormData에 추가
 		Object.keys(Tdata).forEach(key => {
@@ -369,7 +370,8 @@ function join(){
 				bpc5 : b_postcode5.val(),
 				baddress : baddress.val(),
 				bdetail : bdetail.val(),
-				bphone : bphone.val()	
+				bphone : bphone.val(),
+				${_csrf.parameterName} : '${_csrf.token}'
 			};
 			// 나머지 데이터도 FormData에 추가
 			Object.keys(Tdata).forEach(key => {

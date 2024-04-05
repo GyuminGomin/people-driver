@@ -10,6 +10,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,6 +42,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private DeveloperService ds;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	// 만들어놓은 util 패키지의 GmailAuthentication
 	@Autowired
@@ -59,7 +62,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		if (file != null && !file.isEmpty()) {
 			// 비밀번호 encoding
-			String encPass = CookieUtils.encrypt(member.getPassword());
+			String encPass = passwordEncoder.encode(member.getPassword());
 			member.setPassword(encPass);
 			
 			// 이미지 업로드
@@ -77,7 +80,7 @@ public class MemberServiceImpl implements MemberService {
 			}
 		} else {
 			// 비밀번호 encoding
-			String encPass = CookieUtils.encrypt(member.getPassword());
+			String encPass = passwordEncoder.encode(member.getPassword());
 			member.setPassword(encPass);
 			
 			Member mem = mr.save(member);

@@ -1,7 +1,5 @@
 package com.gls.ppldv.configuration.security;
 
-import java.util.Optional;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,10 +22,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Optional<Member> member = mr.findByEmail(email);
-		if (!member.isPresent()) {
-			throw new UsernameNotFoundException("Not Exist");
-		}
-		return CustomUserDetails.create(member.get());
+		Member member = mr.findByEmail(email)
+				.orElseThrow(() -> new UsernameNotFoundException("Not Exist"));
+		return new CustomUserDetails(member);
+		
 	}
 }

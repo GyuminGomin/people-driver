@@ -1,44 +1,23 @@
 package com.gls.ppldv.configuration.security;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.gls.ppldv.user.entity.Member;
 
-import lombok.Getter;
+import lombok.Data;
 
+@Data
 public class CustomUserDetails implements UserDetails {
 
-	private static final long serialVersionUID = 1L;
+	private Member member; // composition
 	
-	private String email;
-	private String password;
-	private Collection<? extends GrantedAuthority> authorities;
-	
-	public CustomUserDetails(String email, String password, Collection<? extends GrantedAuthority> authorities) {
-		this.email = email;
-		this.password = password;
-		this.authorities = authorities;
+	public CustomUserDetails(Member member) {
+		this.member = member;
 	}
-	
-	
-	public static CustomUserDetails create(Member member) {
-		/*
-			List<GrantedAuthority> authorities = new ArrayList<>();
-			authorities.add(new SimpleGrantedAuthority(member.getRole().toString()));
-		*/
-		List<SimpleGrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(member.getRole().toString()));
-		
-		return new CustomUserDetails(member.getEmail(), member.getPassword(), authorities);
-	}
-	
-	@Getter
-	private Member member;
 	
 	/**
 	 * 권한을 member 클래스의 Role 속성에 해당하는 값으로 설정
@@ -50,17 +29,24 @@ public class CustomUserDetails implements UserDetails {
 	 */
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Collection<GrantedAuthority> authorities = new ArrayList<>();
+		authorities.add(new GrantedAuthority() {
+			@Override
+			public String getAuthority() {
+				return member.getRole().toString();
+			}
+		});
 		return authorities;
 	}
 
 	@Override
 	public String getPassword() {
-		return password;
+		return member.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return email;
+		return member.getEmail();
 	}
 
 	/**

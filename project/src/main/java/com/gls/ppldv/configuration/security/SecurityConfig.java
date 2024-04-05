@@ -1,18 +1,19 @@
 package com.gls.ppldv.configuration.security;
 
-import javax.sql.DataSource;
+import java.nio.file.AccessDeniedException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
+import com.gls.ppldv.configuration.security.handler.CsrfAccessDeniedHandler;
 import com.gls.ppldv.configuration.security.handler.LoginFailureHandler;
 import com.gls.ppldv.configuration.security.handler.LoginSuccessHandler;
 
@@ -23,6 +24,10 @@ public class SecurityConfig {
 	private LoginSuccessHandler loginSuccessHandler;
 	@Autowired
 	private LoginFailureHandler loginFailureHandler;
+	@Autowired
+	private CsrfAccessDeniedHandler csrfAccessDeniedHandler;
+	@Autowired
+	private UserDetailsService uds;
 	
 	
 	/**
@@ -35,7 +40,7 @@ public class SecurityConfig {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	/**
 	 * 인증되든 인증되지 않든 모든 접속 유저
 	 */
@@ -78,6 +83,9 @@ public class SecurityConfig {
 		http
 			.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 			.and()
+			.exceptionHandling()
+				.accessDeniedHandler(csrfAccessDeniedHandler)
+				.and()
 			.authorizeRequests()
 				/*
 				 * @Bean public WebSecurityCustomizer webSecurityCustomizer() { return (web) ->
@@ -96,7 +104,7 @@ public class SecurityConfig {
 			.formLogin()
 				.loginPage("/user/login").permitAll()
 				.usernameParameter("email")
-				.passwordParameter("pass")
+				.passwordParameter("password")
 				.loginProcessingUrl("/user/login")
 				.failureHandler(loginFailureHandler)
 				.successHandler(loginSuccessHandler)
@@ -105,9 +113,16 @@ public class SecurityConfig {
 				.rememberMeCookieName("Id")
 				.rememberMeParameter("checked")
 				.tokenValiditySeconds(60*60*24*15)
+				.userDetailsService(uds)
+				.authenticationSuccessHandler(loginSuccessHandler)
 				.and()
 			.logout()
-				.logoutUrl("/user/logout").permitAll();
+				.logoutUrl("/user/logout")
+				.permitAll()
+				.and()
+			.headers()
+				.contentSecurityPolicy("script-src 'self'");
+		
 		
 		return http.build();
 	}
