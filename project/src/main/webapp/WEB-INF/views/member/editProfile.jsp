@@ -10,7 +10,7 @@
 	<input type="hidden" class="postcodify_address"/>
 	<img src="${path}/resources/img/logo/logo2.png" id="logo" />
 	<form id="editProfile" action="/user/edit" method="POST" enctype="multipart/form-data">
-		<input type="hidden" name="csrf_token" value="${csrf_token}" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<div id="table">
 			<div>
 				<h2>회원정보 수정</h2>
@@ -140,7 +140,7 @@
      
      <form id="deleteProfile" action="/user/removeUser" method="post">
 		<input type="hidden" id="email" name="email" value="${loginMember.email}"/>
-		<input type="hidden" name="csrf_token" value="${csrf_token}" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
      </form>
      
      
@@ -259,21 +259,6 @@
 			alert("삭제 성공 (메인화면으로 돌아갑니다.)");
 			let form = $("#deleteProfile");
 			form.submit();
-			
-			// 고민을 많이 해봤는데,
-			// 삭제가 문제가 생기는 경우는 네트워크 문제 때문에 발생
-			// 따라서 일반적으론 문제가 생기지 않기에
-			// 삭제 완료를 바로 구현해놓자.
-			
-			// 모르겠다
-			// 강사님께 질문해보자
-			
-			// 만약 리다이렉트했는데 네트워크에 문제가 발생한다고 하면,
-			// 삭제가 완료되지 않았는데도 리다이렉트 될 거임..
-			// 따라서 deleteMapping으로 데이터 요청을 통해 송수신
-			// 하는 방식이 맞지만, 네트워크 문제는 발생하지 않는다고 생각하자
-			// 데이터 요청하면 로그아웃은 Cookie를 직접 구현해야함
-			// 리다이렉트 방식은 사용할 수 없기에
 		}
 			
 	}

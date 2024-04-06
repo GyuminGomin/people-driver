@@ -9,6 +9,7 @@
 	<div class="form">
 		<form action="/user/changePass" method="post">
 			<input type="hidden" name="email" id="email" value="${email}" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<input type="submit" id="formSubmit" style="display:none;"/>
 		</form>
 		<h1>코드 인증</h1>
@@ -46,7 +47,8 @@
 				url : "/user/passAccept",
 				data : {
 					email : email.val(),
-					code : code.val()
+					code : code.val(),
+					${_csrf.parameterName} : '${_csrf.token}'
 				},
 				dataType : "text", 
 				success : function(result) {

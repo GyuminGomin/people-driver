@@ -229,6 +229,7 @@
 		formData.append('tendency', tendency);
 		formData.append('school', school.val());
 		formData.append('uno', uno.val());
+		formData.append('${_csrf.parameterName}', '${_csrf.token}');
 		
 		nameList.each(function(index) {
 			let jobName = $(this).val();

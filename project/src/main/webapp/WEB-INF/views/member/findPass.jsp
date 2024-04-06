@@ -19,7 +19,7 @@
 			<div class="findPassForm">
 				<form action="/user/passAuth" method="post">
 					<input type="email" name="email" id="email" placeholder="이메일 주소" required />
-					<input type="hidden" name="csrf_token" value="${csrf_token}" />
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<input type="submit" id="formSubmit" style="display:none;"/>
 				</form>
 				<input type="text" name="name" id="name" placeholder="이름" required />
@@ -60,7 +60,8 @@
 				url : "/user/find",
 				data : {
 					email : email.val(),
-					name : name.val()
+					name : name.val(),
+					${_csrf.parameterName} : '${_csrf.token}'
 				},
 				dataType : "text",
 				success : function(result) {

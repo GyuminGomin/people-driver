@@ -21,6 +21,10 @@ public class CsrfAccessDeniedHandler implements AccessDeniedHandler {
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		
+		// 로그인된 회원의 role이 Business인데 예외가 발생하면, developer 접속했다는 의미
+		// dev는 반대
+		// csrf는 ????
+		
 		String errorMessage = "csrf";
 		
 		// 응답 데이터 설정

@@ -1,11 +1,8 @@
 package com.gls.ppldv.configuration.security;
 
-import java.nio.file.AccessDeniedException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -42,17 +39,20 @@ public class SecurityConfig {
 	}
 
 	/**
-	 * 인증되든 인증되지 않든 모든 접속 유저
+	 * Permit_all (전체 허용)
 	 */
 	private static final String[] PERMIT_URL = {
-		// GET
-		"/user/register", "/user/login", "/user/findPass",
-		
-		// POST
+		// /user/register는 회원가입, /user/login은 로그인, /user/findPass는 비밀번호 찾기, /user/logout 인증된 회원, /user/editProfile 인증된 회원
+		// user
+		"/user/register", "/user/login", "/user/findPass"
+		// /dev/register는 내 이력서 등록, /dev/profile 내 이력서 확인, /dev/readPage 내 이력서 수정 삭제, /dev/readViewCount all, /dev/readOtherPage all, /dev/search all, /dev/searchFirst all, /dev/Info 인증된 회원
+		// developer
+		,"/developer/register", "/developer/profile", "/developer/readPage", "/developer/readViewCount", "/developer/readOtherPage", "/developer/search", "/developer/searchFirst", "/developer/Info"
+		// business는 생략
 	};
 	
 	/**
-	 * 로그인된 회원 (인증된 회원)
+	 * 로그인된 회원 (인증된 회원) (authentication)
 	 */
 	private static final String[] AUTH_URL = {
 		// GET
@@ -85,6 +85,7 @@ public class SecurityConfig {
 			.and()
 			.exceptionHandling()
 				.accessDeniedHandler(csrfAccessDeniedHandler)
+				.authenticationEntryPoint()
 				.and()
 			.authorizeRequests()
 				/*
@@ -93,13 +94,10 @@ public class SecurityConfig {
 				 * 아래와 같은 것
 				 */
 				.antMatchers("/resources/**").permitAll()
-				.antMatchers("/").permitAll()
-				.antMatchers("/user/login", "/user/register", "/user/findPass").permitAll()
-				.antMatchers("/user/logout").authenticated()
-				.antMatchers("/user/edit", "/user/removeUser").authenticated()
-				.antMatchers("/developer/**").hasRole("DEVELOPER")
-				.antMatchers("business/**").hasRole("BUSINESS")
-				.anyRequest().authenticated() // 나머지 요청은 인증된 사용자만 접근 가능
+				.antMatchers("/user/logout", "/user/editProfile", "developer/Info").authenticated()
+				.antMatchers("/developer/register", "/developer/profile", "/developer/readPage").hasRole("DEVELOPER")
+				.antMatchers("/business/register").hasRole("BUSINESS")
+				.anyRequest().permitAll()
 				.and()
 			.formLogin()
 				.loginPage("/user/login").permitAll()

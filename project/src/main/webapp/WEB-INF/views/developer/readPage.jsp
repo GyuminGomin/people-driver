@@ -293,7 +293,7 @@
 		formData.append('tendency', tendency);
 		formData.append('school', school.val());
 		formData.append('dno', dno.val());
-		formData.append('flag', flag);
+		formData.append('${_csrf.parameterName}', '${_csrf.token}');
 		
 		nameList.each(function(index) {
 			let jobName = $(this).val();
@@ -337,7 +337,8 @@
 			type: "POST",
 			url: "/developer/remove",
 			data: {
-				dno : dno.val()
+				dno : dno.val(),
+				${_csrf.parameterName} : '${_csrf.token}'
 			},
 			dataType: "text",
 			success: function(result) {

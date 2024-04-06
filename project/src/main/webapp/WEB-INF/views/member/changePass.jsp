@@ -9,7 +9,7 @@
 	<section>
 		<div class="form">
 			<input type="hidden" id="email" value="${email}">
-			<input type="hidden" id="csrf_token" name="csrf_token" value="${csrf_token}" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<h1>비밀번호 변경</h1>
 			<p>새롭게 사용하실 비밀번호를 입력해 주세요.</p>
 			<div class="changePassForm">
@@ -47,7 +47,7 @@ function submit() {
 			data : {
 				email : email.val(),
 				password : pass.val(),
-				csrf_token : csrf_token.val()
+				${_csrf.parameterName} : '${_csrf.token}'
 			},
 			dataType : "text",
 			success : function(result) {
