@@ -32,6 +32,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		// 회원 정보 session에 저장
 		HttpSession session = request.getSession();
 		session.setAttribute("loginMember", member);
+		response.sendRedirect("/success?message=loginSuccess");
 	}
 	
 	

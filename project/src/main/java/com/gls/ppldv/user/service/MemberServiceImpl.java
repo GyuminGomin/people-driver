@@ -15,13 +15,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.gls.ppldv.common.util.CookieUtils;
 import com.gls.ppldv.common.util.FileUtil;
 import com.gls.ppldv.common.util.GmailAuthentication;
-import com.gls.ppldv.configuration.userException.LoginFailedException;
 import com.gls.ppldv.developer.service.DeveloperService;
 import com.gls.ppldv.user.dto.EditDTO;
-import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 import com.gls.ppldv.user.entity.PassCode;
 import com.gls.ppldv.user.mapper.MemberMapper;
@@ -89,31 +86,6 @@ public class MemberServiceImpl implements MemberService {
 			}
 		}
 		return message;
-	}
-
-	@Override
-	@Transactional
-	public Member login(LoginDTO member) throws Exception {
-		
-		Member mem = mr.findByEmail(member.getEmail()).get();
-		
-		String encryptedPassword = mem.getPassword();
-		
-		String decryptedPassword = CookieUtils.decrypt(encryptedPassword);
-		
-		Member m = null;
-		
-		if (decryptedPassword.equals(member.getPassword())) {
-			m = mr.findByEmail(member.getEmail()).get();
-		}
-		
-		if (m != null) {
-			// 로그인 성공
-			return m;
-		} else {
-			// 로그인 실패
-			throw new LoginFailedException("NOT EQUAL");
-		}
 	}
 
 	@Override
@@ -207,7 +179,7 @@ public class MemberServiceImpl implements MemberService {
 	public String changePass(Member member) throws Exception {
 		
 		// 암호화 해서 다시 저장
-		String encryptedPassword = CookieUtils.encrypt(member.getPassword());
+		String encryptedPassword = passwordEncoder.encode(member.getPassword());
 		member.setPassword(encryptedPassword);
 		
 		mm.changePass(member);

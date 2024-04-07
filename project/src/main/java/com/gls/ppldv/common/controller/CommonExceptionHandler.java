@@ -1,25 +1,30 @@
 package com.gls.ppldv.common.controller;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.gls.ppldv.configuration.userException.LoginFailedException;
-
-@ControllerAdvice("com.gls.ppldv.*.controller")
+@ControllerAdvice
 public class CommonExceptionHandler {
 	
 	@ExceptionHandler(Exception.class)
-	public void handleException(Exception e) {
+	public void handleException(Exception e, HttpServletResponse response) throws IOException {
 		e.printStackTrace();
+		System.out.println("----------------------");
+		System.out.println(e.getClass());
+		System.out.println("----------------------");
+		
+		response.sendRedirect("/error?message=wrong");
+		// 지금 500 에러들은 모두 다 이게 처리하고 있음
+		// 지금 403은 Spring Security에서 다 처리하고 있음
 	}
 	
-	@ExceptionHandler(LoginFailedException.class)
-	public ResponseEntity<String> handleLoginFailedException(LoginFailedException e) {
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "text/plain;charset=utf-8");
-		return new ResponseEntity<>(e.getMessage(), headers, HttpStatus.OK);
+	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+	public void handleException(HttpRequestMethodNotSupportedException e, HttpServletResponse response) throws IOException {
+		response.sendRedirect("/error/error_405");
 	}
 }

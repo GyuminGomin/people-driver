@@ -10,7 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-import com.gls.ppldv.configuration.security.handler.CsrfAccessDeniedHandler;
+import com.gls.ppldv.configuration.security.handler.AuthenticationDeniedHandler;
+import com.gls.ppldv.configuration.security.handler.AuthAccessDeniedHandler;
 import com.gls.ppldv.configuration.security.handler.LoginFailureHandler;
 import com.gls.ppldv.configuration.security.handler.LoginSuccessHandler;
 
@@ -22,7 +23,9 @@ public class SecurityConfig {
 	@Autowired
 	private LoginFailureHandler loginFailureHandler;
 	@Autowired
-	private CsrfAccessDeniedHandler csrfAccessDeniedHandler;
+	private AuthenticationDeniedHandler authenticationDeniedHandler;
+	@Autowired
+	private AuthAccessDeniedHandler authAccessDeniedHandler;
 	@Autowired
 	private UserDetailsService uds;
 	
@@ -37,46 +40,6 @@ public class SecurityConfig {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
-	/**
-	 * Permit_all (전체 허용)
-	 */
-	private static final String[] PERMIT_URL = {
-		// /user/register는 회원가입, /user/login은 로그인, /user/findPass는 비밀번호 찾기, /user/logout 인증된 회원, /user/editProfile 인증된 회원
-		// user
-		"/user/register", "/user/login", "/user/findPass"
-		// /dev/register는 내 이력서 등록, /dev/profile 내 이력서 확인, /dev/readPage 내 이력서 수정 삭제, /dev/readViewCount all, /dev/readOtherPage all, /dev/search all, /dev/searchFirst all, /dev/Info 인증된 회원
-		// developer
-		,"/developer/register", "/developer/profile", "/developer/readPage", "/developer/readViewCount", "/developer/readOtherPage", "/developer/search", "/developer/searchFirst", "/developer/Info"
-		// business는 생략
-	};
-	
-	/**
-	 * 로그인된 회원 (인증된 회원) (authentication)
-	 */
-	private static final String[] AUTH_URL = {
-		// GET
-			// 나중에 토큰 방식 사용할 예정이기 때문에
-			// /user/editProfile 수정 예정
-		"/user/logout", "/user/editProfile", 
-		
-		
-		
-	};
-	
-	/**
-	 * DEVELOPER 회원 (DEVELOPER 권한 인증 회원) 
-	 */
-	private static final String[] DEV_URL = {
-		
-	};
-	
-	/**
-	 * BUSINESS 회원 (BUSINESS 권한 인증 회원) 
-	 */
-	private static final String[] BUS_URL = {
-			
-	};
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -84,8 +47,8 @@ public class SecurityConfig {
 			.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 			.and()
 			.exceptionHandling()
-				.accessDeniedHandler(csrfAccessDeniedHandler)
-				.authenticationEntryPoint()
+				.accessDeniedHandler(authAccessDeniedHandler)
+				.authenticationEntryPoint(authenticationDeniedHandler)
 				.and()
 			.authorizeRequests()
 				/*
@@ -116,11 +79,10 @@ public class SecurityConfig {
 				.and()
 			.logout()
 				.logoutUrl("/user/logout")
-				.permitAll()
 				.and()
 			.headers()
-				.contentSecurityPolicy("script-src 'self'");
-		
+				.contentSecurityPolicy("script-src 'self' 'unsafe-inline' http://code.jquery.com http://d1p7wdleee1q2z.cloudfront.net http://dapi.kakao.com https://cdn.tiny.cloud http://t1.daumcdn.net" );
+			
 		
 		return http.build();
 	}

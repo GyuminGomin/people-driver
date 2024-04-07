@@ -6,7 +6,7 @@
 
 
 - 로그인, 회원가입, 자동로그인, csrf, xss security 적용 완료
-- TODO : 권한 처리
+- TODO : 권한 처리 (완료) (블로그에 업로드 중)
 
 - TODO2 : session -> jwt
 

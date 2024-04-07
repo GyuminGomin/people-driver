@@ -20,20 +20,12 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
 		
-		String errorMessage = null;
-		
 		if (exception instanceof BadCredentialsException || exception instanceof InternalAuthenticationServiceException){
 			// 실패 상태 코드 설정
-		    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401 Unauthorized
-		    // 실패 응답 데이터 생성
-		    errorMessage = "Not Exist";
+		    response.sendRedirect("/errors?message=NotExist");
 		} else {
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 Bad Request
-			errorMessage = "Error";
+			response.sendRedirect("/errors?message=Error");
 		}
-	    // 응답 데이터 설정
-	    response.setContentType("text/html;charset=utf-8");
-	    response.getWriter().write(errorMessage);
 	}
 
 }

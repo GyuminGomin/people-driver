@@ -1,9 +1,11 @@
 package com.gls.ppldv.main.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -23,23 +25,10 @@ public class HomeController {
 		return "redirect:developer/search";
 	}
 	
-	// 에러 처리
-	@GetMapping("error_400")
-	public String error400() {
-		return "/error/error_400";
+	// 성공 처리 (로그인 성공)
+	@GetMapping("success")
+	public String success(@RequestParam("message") String message, Model model) {
+		model.addAttribute("message", message);
+		return "/error/success";
 	}
-	@GetMapping("error_403")
-	public String error403() {
-		return "/error/error_403";
-	}
-	@GetMapping("error_404")
-	public String error404() {
-		return "/error/error_404";
-	}
-	@GetMapping("error_405")
-	public String error405() {
-		return "/error/error_405";
-	}
-	
-	
 }

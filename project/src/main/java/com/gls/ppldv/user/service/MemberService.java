@@ -3,7 +3,6 @@ package com.gls.ppldv.user.service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.gls.ppldv.user.dto.EditDTO;
-import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 
 public interface MemberService extends FindPassService {
@@ -16,14 +15,6 @@ public interface MemberService extends FindPassService {
 	 * @return - 메세지
 	 */
 	public String register(Member member, MultipartFile file) throws Exception;
-
-	/**
-	 * 로그인
-	 *
-	 * @param member - 회원 찾기를 위한 객체
-	 * @return - 존재하는 회원 정보
-	 */
-	public Member login(LoginDTO member) throws Exception;
 
 	/**
 	 * 회원정보 수정

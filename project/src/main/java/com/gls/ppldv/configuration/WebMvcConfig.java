@@ -2,6 +2,7 @@ package com.gls.ppldv.configuration;
 
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -10,9 +11,14 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.WebContentInterceptor;
 
+import com.gls.ppldv.configuration.security.interceptor.CustomInterceptor;
+
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
+	@Autowired
+	private CustomInterceptor customInterceptor;
+	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.jsp("/WEB-INF/views/", ".jsp");
@@ -33,6 +39,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
         interceptor.addCacheMapping(CacheControl.maxAge(86400, TimeUnit.SECONDS), "/resources/img/**");
 
         registry.addInterceptor(interceptor).addPathPatterns("/**");
+        
+        registry.addInterceptor(customInterceptor)
+        		.addPathPatterns("/developer/**")
+        		.addPathPatterns("/business/**")
+        		.excludePathPatterns("/developer/search")
+        		.excludePathPatterns("/developer/searchFirst")
+        		.excludePathPatterns("/developer/readOtherPage")
+        		.excludePathPatterns("/developer/readViewCount")
+        		.excludePathPatterns("/developer/Info")
+        		.excludePathPatterns("/business/search")
+        		.excludePathPatterns("/business/project");
+
 	}
 	
 	

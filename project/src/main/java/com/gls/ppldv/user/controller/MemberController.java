@@ -1,9 +1,6 @@
 package com.gls.ppldv.user.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.gls.ppldv.common.util.CookieUtils;
-import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 import com.gls.ppldv.user.entity.PassCode;
 import com.gls.ppldv.user.service.MemberService;
@@ -42,30 +37,6 @@ public class MemberController {
 		}
 		return new ResponseEntity<>(message, headers, HttpStatus.OK);
 	}
-
-	/*
-	// 로그인 처리
-	@PostMapping("/login")
-	public ResponseEntity<Object> login(LoginDTO member,
-			HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession(); // 세션을 받아와서
-		HttpHeaders headers = new HttpHeaders();
-		// 로그인 성공 시에는 Member 객체를 JSON 형식으로 전송
-		Member m = ms.login(member);
-		session.setAttribute("loginMember", m); // 로그인 된 회언 정보를 세션에 담아 보내주고
-
-		if (member.isChecked()) {
-			String encryptedEmail = CookieUtils.encrypt(m.getEmail());
-			Cookie cookie = new Cookie("id", encryptedEmail);
-			cookie.setMaxAge(60 * 60 * 24); // 1일
-			cookie.setPath("/"); // 이 홈페이지의 모든 곳
-			response.addCookie(cookie);
-		}
-
-		return new ResponseEntity<>(m, headers, HttpStatus.OK);
-	}
-	*/
 
 	// 비밀번호 찾기 처리
 	@PostMapping("/find")

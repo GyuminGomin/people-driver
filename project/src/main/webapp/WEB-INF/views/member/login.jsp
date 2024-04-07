@@ -7,15 +7,17 @@
 
 <c:set var="content">
 	<section>
+	<form method="post" action="/user/login" id="form">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<div class="login" id="login">
 		<h1 class="login_title">로그인</h1>
 		<div class="loginForm">
-			<input type="text" id="email" placeholder="이메일 주소"/>
-			<input type="password" id="pass" placeholder="비밀번호"/>
+			<input type="text" name="email" id="email" placeholder="이메일 주소" autofocus="autofocus"/>
+			<input type="password" name="password" id="pass" placeholder="비밀번호"/>
 		</div>
 		<div class="loginCheck">
-			<input type="checkbox" name="loginSession" id="loginSession"/>
-			<label for="loginSession">로그인 상태 유지</label>
+			<input type="checkbox" name="checked" id="loginSession"/>
+			<label for="checked">로그인 상태 유지</label>
 			
 			<a href="/user/findPass" id="test">비밀번호 찾기</a>
 		</div>
@@ -24,6 +26,7 @@
 			<p>계정이 없으신가요? <a href="/user/register">회원가입하기</a> </p>
 		</div>
 	</div>
+	</form>
 	</section>
 </c:set>
 
@@ -55,33 +58,7 @@
 			alert('비밀번호가 입력되지 않았습니다.');
 			pass.focus();
 		} else {
-			$.ajax({
-				type : "POST",
-				url : "/user/login",
-				data :{
-					email : $("#email").val(),
-					password :  $("#pass").val(),
-					checked : $("#loginSession").is(":checked"),
-					${_csrf.parameterName} : '${_csrf.token}'
-				},
-				dataType : "text",
-				success : function(result) {
-					alert(" 회원 로그인 성공");
-					location.href="/";
-				},
-				error : function(res) {
-					if (res.responseText === 'Not Exist') {
-						alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-						$("#email").val('');
-						$("#pass").val('');
-						email.focus();
-					} else if (res.responseText === 'csrf') {
-						alert("잘못된 접근방식 입니다.");
-					} else {
-						alert("알 수 없는 이유로 로그인에 실패하였습니다. 관리자에게 문의해 주세요.");
-					}
-				}
-			});
+			$("#form").submit();
 		}
 	}
 
