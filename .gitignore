@@ -13,6 +13,7 @@ project/.classpath
 project/.factorypath
 project/bin/
 project/.settings
+project/log/
 
 # 배포버전 삭제
 배포버전/
