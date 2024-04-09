@@ -67,27 +67,4 @@
 	<bean id="uploadPath" class="java.lang.String">
 		<constructor-arg value="${upload.file}"/>
 	</bean>
-	
-	<!-- AWS S3 설정	
-	<bean id="awsCredentials" class="com.amazonaws.auth.BasicAWSCredentials">
-		<constructor-arg value="${aws.accesskey}" />
-		<constructor-arg value="${aws.secretkey}" />
-	</bean>
-	
-	<bean id="amazonS3Client" class="com.amazonaws.services.s3.AmazonS3Client">
-		<constructor-arg ref="awsCredentials" />
-	</bean>
-	-->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 </beans>
