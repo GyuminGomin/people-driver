@@ -4,14 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.web.filter.CorsFilter;
 
-import com.gls.ppldv.configuration.security.handler.AuthenticationDeniedHandler;
+import com.gls.ppldv.common.filter.MyFilter1;
 import com.gls.ppldv.configuration.security.handler.AuthAccessDeniedHandler;
+import com.gls.ppldv.configuration.security.handler.AuthenticationDeniedHandler;
 import com.gls.ppldv.configuration.security.handler.LoginFailureHandler;
 import com.gls.ppldv.configuration.security.handler.LoginSuccessHandler;
 
@@ -29,7 +32,6 @@ public class SecurityConfig {
 	@Autowired
 	private UserDetailsService uds;
 	
-	
 	/**
 	 * 패스워드 인코더
 	 * BCrypt (Blowfish 알고리즘 기반)
@@ -44,8 +46,12 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
-			.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-			.and()
+			.csrf().disable()
+			.httpBasic().disable() // 쿠키방식 사용, Bearer : 토큰(노출 가능) 방식 사용할 예정
+			.sessionManagement() // 세션 정책을 Stateless로 지정해 Spring Security가 세션을 생성하지 않고, 각 요청 간 상태를 유지하지 않음을 의미 -> SecurityContextHolder가 세션을 사용하지 않게 됨
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+			.addFilterBefore(new MyFilter1(), BasicAuthenticationFilter.class) // BasicAuthenticationFilter 전에 실행
 			.exceptionHandling()
 				.accessDeniedHandler(authAccessDeniedHandler)
 				.authenticationEntryPoint(authenticationDeniedHandler)

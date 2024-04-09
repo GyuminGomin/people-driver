@@ -12,6 +12,7 @@
 		<java-version>11</java-version>
 		<org.springframework-boot-version>2.7.18</org.springframework-boot-version>
 		<org.aspectj-version>1.9.21.1</org.aspectj-version>
+		<io.jsonwebtoken-version>0.12.5</io.jsonwebtoken-version>
 	</properties>
 	
 	<dependencies>
@@ -29,6 +30,15 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-web</artifactId>
 		    <version>${org.springframework-boot-version}</version>
+		</dependency>
+		
+		<!-- SpringBoot Devtools -> 자동 재실행 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		    <version>${org.springframework-boot-version}</version>
+		    <optional>true</optional> <!-- false : 자동 재실행 하지 않겠다. -->
 		</dependency>
 		
 		<!-- AspectJ -->
@@ -69,6 +79,27 @@
 		    <artifactId>spring-boot-starter-security</artifactId>
 		    <version>${org.springframework-boot-version}</version>
 		</dependency>
+		
+		<!-- jwt 사용 -->
+		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-api</artifactId>
+		    <version>${io.jsonwebtoken-version}</version>
+		</dependency>
+		<!-- jwt 구현체 -->
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-impl</artifactId>
+		    <version>${io.jsonwebtoken-version}</version>
+		</dependency>
+		<!-- jwt - json 파싱 라이브러리 -->
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-jackson</artifactId>
+		    <version>${io.jsonwebtoken-version}</version>
+		</dependency>
+		
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
 		<dependency>

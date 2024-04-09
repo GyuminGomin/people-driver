@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -50,8 +51,19 @@ public class WebMvcConfig implements WebMvcConfigurer {
         		.excludePathPatterns("/developer/Info")
         		.excludePathPatterns("/business/search")
         		.excludePathPatterns("/business/project");
-
 	}
+
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/api/**") // CORS를 적용할 패턴
+				.allowedOrigins("*") // 모든 IP에 응답을 허용하겠다.
+				.allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH") // 모든 메소드에 응답을 허용하겠다.
+				.allowedHeaders("*") // 모든 헤더에 응답을 허용하겠다.
+				.allowCredentials(true) // 내 서버가 응답을 할 때 json을 자바스크립트에서 처리할 수 있게 할지를 설정
+				.maxAge(3600); // pre-flight 요청 결과를 캐시할 시간
+	}
+	
+	
 	
 	
 	

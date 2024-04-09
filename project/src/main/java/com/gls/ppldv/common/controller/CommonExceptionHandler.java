@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class CommonExceptionHandler {
 	
-	@ExceptionHandler(Exception.class)
+	// @ExceptionHandler(Exception.class)
 	public void handleException(Exception e, HttpServletResponse response) throws IOException {
 		e.printStackTrace();
 		System.out.println("----------------------");
@@ -23,7 +23,7 @@ public class CommonExceptionHandler {
 		// 지금 403은 Spring Security에서 다 처리하고 있음
 	}
 	
-	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+	// @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 	public void handleException(HttpRequestMethodNotSupportedException e, HttpServletResponse response) throws IOException {
 		response.sendRedirect("/error/error_405");
 	}
