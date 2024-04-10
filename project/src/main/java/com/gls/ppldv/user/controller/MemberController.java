@@ -37,7 +37,7 @@ public class MemberController {
 		}
 		return new ResponseEntity<>(message, headers, HttpStatus.OK);
 	}
-
+	
 	// 비밀번호 찾기 처리
 	@PostMapping("/find")
 	public ResponseEntity<String> findPass(Member member, HttpServletRequest request) throws Exception {

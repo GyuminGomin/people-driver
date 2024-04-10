@@ -9,10 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.web.filter.CorsFilter;
 
-import com.gls.ppldv.common.filter.MyFilter1;
 import com.gls.ppldv.configuration.security.handler.AuthAccessDeniedHandler;
 import com.gls.ppldv.configuration.security.handler.AuthenticationDeniedHandler;
 import com.gls.ppldv.configuration.security.handler.LoginFailureHandler;
@@ -51,7 +48,6 @@ public class SecurityConfig {
 			.sessionManagement() // 세션 정책을 Stateless로 지정해 Spring Security가 세션을 생성하지 않고, 각 요청 간 상태를 유지하지 않음을 의미 -> SecurityContextHolder가 세션을 사용하지 않게 됨
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
-			.addFilterBefore(new MyFilter1(), BasicAuthenticationFilter.class) // BasicAuthenticationFilter 전에 실행
 			.exceptionHandling()
 				.accessDeniedHandler(authAccessDeniedHandler)
 				.authenticationEntryPoint(authenticationDeniedHandler)

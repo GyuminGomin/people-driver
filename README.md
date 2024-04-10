@@ -1,3 +1,134 @@
+# 새로운 깨달음
+
+``` java
+@Configuration
+@RequiredArgsConstructor
+public class LoginSuccessHandler implements AuthenticationSuccessHandler{
+
+	private final JwtProvider jwtProvider;
+	
+	@Override
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+			Authentication authentication) throws IOException, ServletException {
+
+		CustomUserDetails userDetail = (CustomUserDetails) authentication.getPrincipal();
+		
+		Member member = userDetail.getMember();
+		
+		String jwtToken = jwtProvider.generateToken(authentication);
+		
+		/*
+		Cookie cookie = new Cookie("jt", jwtToken);
+		cookie.setPath("/");
+		response.addCookie(cookie);
+		*/
+		
+		response.setHeader("jwtToken", jwtToken);
+		
+		// 이전 요청이 POST 였기 때문에 POST로 forward 요청을 보내게 되어서 문제가 발생
+		// 그래서 이러한 경우를 해결해주기 위해서는 어떻게 해야할까?
+		// /success라는 post 요청처리하는 컨트롤러를 만들고, modelAndView 객체로 model의 header에 jwtToken을 담아서 보내주면 된다.
+		// request.getRequestDispatcher("/success?message=loginSuccess").forward(request, response);
+		
+		
+		// 정리
+		/*
+		 * 왜 jwt Token을 restful한 서버에서 사용하냐 하면,
+		 * 응답에 따른 성공과 에러 처리를 한 페이지에서 처리할 수 있기 때문
+		 * 만약 form을 사용하게 되면, RESTAPI로 데이터를 보내도 (프론트가) 받을 수가 없음
+		 * 따라서 무조건 ModelAndView 객체로 담아서 프론트로 보내줘야 하는데, 서버에 의존성이 극심해지고, 독립성을 유지할 수가 없음
+		 * 즉, 서버가 페이지를 이동하는 처리 로직을 담당하므로 서버에 부하가 많이 생김과 동시에 새롭게 process를 담당하는 추가적인 페이지도 개설해야 하므로, 프론트의 용량이 너무 커지게 됨
+		 */
+		
+		/*
+		 * 따라서 나는 이제 부터 서버에 대한 의존성을 줄이기 위해 form 태그로 작성한 코드들을
+		 * 전부 다 ajax로 바꿔서 처리를 하려고 함
+		 */
+
+
+        // 삭제할 것 또는 추가할 것
+        /*
+         * login.jsp (ajax로 변경하고 성공 시, 에러 시 요청 처리 로직 추가)
+         * ----> 사실 할 필요 없는데 에러 시 새로운 페이지로 요청 전달하는걸 여기서 해주자 (그냥 바로 alert 해도 되긴 하지만, 잘 구현해놓은 로직 삭제하기가 너무 아쉽다.)
+         * securityConfig -> formLogin disable로
+         * security에서 로그인 처리를 해주기 위한 Filter 설정 추가
+         * 마지막으로 인증 처리를 담당하는 검증 Filter 설정 추가
+         * 현재는 AccessToken만 설정해 두엇는데, refresh 토큰도 설정해 주자
+         * (아직 아는게 많이 없어서 시간이 많이 걸릴 것이라 예상 -> + 정처기 실기도 있다 ㅜㅜ)
+         */
+	}
+}
+```
+
+``` html
+<!-- 기존 login 처리 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page session="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/member/login.css"/>
+
+<c:set var="content">
+	<section>
+	<form method="post" action="/user/login" id="form">
+	<div class="login" id="login">
+		<h1 class="login_title">로그인</h1>
+		<div class="loginForm">
+			<input type="text" name="email" id="email" placeholder="이메일 주소" autofocus="autofocus"/>
+			<input type="password" name="password" id="pass" placeholder="비밀번호"/>
+		</div>
+		<div class="loginCheck">
+			<input type="checkbox" name="checked" id="loginSession"/>
+			<label for="checked">로그인 상태 유지</label>
+			
+			<a href="/user/findPass" id="test">비밀번호 찾기</a>
+		</div>
+		<div class="loginButton">
+			<button onclick="login()">로그인</button>
+			<p>계정이 없으신가요? <a href="/user/register">회원가입하기</a> </p>
+		</div>
+	</div>
+	</form>
+	</section>
+</c:set>
+
+<%@ include file="/WEB-INF/views/common/frame.jsp" %>
+
+<script>
+	function check() {
+		let chkLogin = $("#loginSession");
+		console.log(chkLogin.is(":checked"));
+	}
+
+	// 로그인
+	function login() {
+		let email = $("#email");
+		let pass = $("#pass");
+		let chkLogin = $("#loginSession");
+		
+		// 정규식
+		var regexEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; // 정규표현식 이메일
+		
+		if (email.val() === '') {
+			alert('이메일을 입력해주세요.');
+			email.focus();
+		} else if (!regexEmail.test(email.val())) {
+			alert('이메일 형식이 맞지 않습니다.');
+			email.val('');
+			email.focus();
+		} else if (pass.val() === '') {
+			alert('비밀번호가 입력되지 않았습니다.');
+			pass.focus();
+		} else {
+			$("#form").submit();
+		}
+	}
+
+</script>
+
+<!-- 수정한 로그인 페이지 -->
+```
 
 
 # ING

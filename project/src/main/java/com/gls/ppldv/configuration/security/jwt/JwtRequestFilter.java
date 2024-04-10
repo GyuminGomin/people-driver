@@ -11,17 +11,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 public class JwtRequestFilter extends OncePerRequestFilter{
 
-	private final JwtProvider jwtProvider;
+	// 이건 토큰 검증을 담당하는 클래스
 	
-	public JwtRequestFilter (TokenProvider tokenProvider) {
-		this.tokenProvider = tokenProvider;
-	}
-
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		String token = tokenProvider.
+		
 	}
-	
-	 
+
 }

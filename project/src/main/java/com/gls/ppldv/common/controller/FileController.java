@@ -23,13 +23,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FileController {
 	
-	// TEST
-	@PostMapping("token")
-	public String token() {
-		return "<h1>token</h1>";
-	}
-	
-	
 	private final String uploadPath;
 	/**
 	 *  프로젝트 root 경로 기준(webAppRoot)

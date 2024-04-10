@@ -12,6 +12,11 @@
 <script>
 const msg = '${message}';
 if (msg == 'loginSuccess') {
+	// 서버에서 response로 헤더에 담아서 jwtToken을 보낸 값을 받아오기
+	let jwtToken = '${header.jwtToken}';
+	// localStorage에 jwtToken 저장
+	localStorage.setItem('jwtToken', jwtToken);
+	
 	alert('로그인 성공');
 	window.location.href="/";
 } else {
