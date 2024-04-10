@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>error</title>
+<title>success</title>
 </head>
 <body>
 
@@ -13,7 +13,7 @@
 const msg = '${message}';
 if (msg == 'loginSuccess') {
 	// 서버에서 response로 헤더에 담아서 jwtToken을 보낸 값을 받아오기
-	let jwtToken = '${header.jwtToken}';
+	let jwtToken = '${jwtToken}';
 	// localStorage에 jwtToken 저장
 	localStorage.setItem('jwtToken', jwtToken);
 	

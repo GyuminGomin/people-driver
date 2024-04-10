@@ -43,12 +43,13 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		response.addCookie(cookie);
 		*/
 		
-		response.setHeader("jwtToken", jwtToken);
+		// response.setHeader("jwtToken", jwtToken);
 		
+		request.setAttribute("jwtToken", jwtToken);
 		// 이전 요청이 POST 였기 때문에 POST로 forward 요청을 보내게 되어서 문제가 발생
 		// 그래서 이러한 경우를 해결해주기 위해서는 어떻게 해야할까?
 		// /success라는 post 요청처리하는 컨트롤러를 만들고, modelAndView 객체로 model의 header에 jwtToken을 담아서 보내주면 된다.
-		// request.getRequestDispatcher("/success?message=loginSuccess").forward(request, response);
+		request.getRequestDispatcher("/success").forward(request, response);
 		
 		
 		// 정리

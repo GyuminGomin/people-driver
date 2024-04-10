@@ -27,7 +27,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		
 		// 이전 요청이 POST 였기 때문에 POST로 forward 요청을 보내게 되어서 문제가 발생
 		// 그래서 이러한 경우를 해결해주기 위해서는 어떻게 해야할까?
-		// /success라는 post 요청처리하는 컨트롤러를 만들고, modelAndView 객체로 model의 header에 jwtToken을 담아서 보내주면 된다.
+		// /success라는 post 요청처리하는 컨트롤러를 만들고, modelAndView 객체로 model의 header가 아닌 바디에 담아서 보내줘야 함.
+		// 일반적으로 DispatcherServlet이 보내는 ModelAndView에 대해서는 response.addHeader와 같은 메서드로 직접 헤더 추가 불가능 ( DispatcherServlet이 일반적으로 헤더를 생성하고 관리하기 때문 -> 따라서 request.addAttribute()만 사용 가능 )
 		// request.getRequestDispatcher("/success?message=loginSuccess").forward(request, response);
 		
 		
