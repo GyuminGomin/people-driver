@@ -7,6 +7,8 @@
 - TODO : 권한 처리 (완료) (https://gyumingomin.tistory.com/8)
 
 - TODO2 : session -> jwt (작업 중)
+    - form 태그로 결합성을 높인 부분들을 다 ajax로 교체해서 결합도 낮추자!!!
+    - 기존 서버에서 페이지 이동을 해줬던 부분들을 프론트에서 페이지 이동으로 다 바꾸자!!! (허걱!!)
 
 - TODO3 : jwt -> OAUTH2
 

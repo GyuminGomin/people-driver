@@ -8,7 +8,6 @@
 <c:set var="content">
 	<section>
 	<form method="post" action="/user/login" id="form">
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<div class="login" id="login">
 		<h1 class="login_title">로그인</h1>
 		<div class="loginForm">
