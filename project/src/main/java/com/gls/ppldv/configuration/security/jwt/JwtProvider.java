@@ -43,7 +43,7 @@ public class JwtProvider {
 		
 		CustomUserDetails cuds = (CustomUserDetails) authentication.getPrincipal();
 		
-		// 이게 작동 안할 거라고 생각하고 있음
+		
 		Member member = cuds.getMember();
 		Long Id = member.getId();
 		String email = member.getEmail();

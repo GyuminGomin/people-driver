@@ -7,7 +7,6 @@
 
 <c:set var="content">
 	<section>
-	<form method="post" action="/user/login" id="form">
 	<div class="login" id="login">
 		<h1 class="login_title">로그인</h1>
 		<div class="loginForm">
@@ -25,7 +24,6 @@
 			<p>계정이 없으신가요? <a href="/user/register">회원가입하기</a> </p>
 		</div>
 	</div>
-	</form>
 	</section>
 </c:set>
 
@@ -57,7 +55,28 @@
 			alert('비밀번호가 입력되지 않았습니다.');
 			pass.focus();
 		} else {
-			$("#form").submit();
+			$.ajax ({
+				type: "post",
+				url: "/user/login",
+				contentType: "application/x-www-form-urlencoded",
+				data: {
+					email: email.val(),
+					password: pass.val(),
+					checked: chkLogin.is(":checked")
+				},
+				dataType: "text",
+				// xhr : XMLHttpRequest(XMLHttpRequest 객체)
+				success: function(res, status, xhr) {
+					alert("로그인 성공");
+					let jwtToken = xhr.getResponseHeader('jwtToken');
+					localStorage.setItem('jwtToken', jwtToken);
+				},
+				error : function(xhr, status, error) {
+					console.log("로그인 실패");
+					console.log(error);
+					
+				}
+			});
 		}
 	}
 

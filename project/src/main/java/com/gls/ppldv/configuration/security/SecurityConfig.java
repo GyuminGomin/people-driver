@@ -3,31 +3,31 @@ package com.gls.ppldv.configuration.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.gls.ppldv.configuration.security.handler.AuthAccessDeniedHandler;
 import com.gls.ppldv.configuration.security.handler.AuthenticationDeniedHandler;
-import com.gls.ppldv.configuration.security.handler.LoginFailureHandler;
-import com.gls.ppldv.configuration.security.handler.LoginSuccessHandler;
+import com.gls.ppldv.configuration.security.jwt.AuthenticationFilter;
+import com.gls.ppldv.configuration.security.jwt.JwtProvider;
 
 @Configuration
 public class SecurityConfig {
 
 	@Autowired
-	private LoginSuccessHandler loginSuccessHandler;
-	@Autowired
-	private LoginFailureHandler loginFailureHandler;
-	@Autowired
 	private AuthenticationDeniedHandler authenticationDeniedHandler;
 	@Autowired
 	private AuthAccessDeniedHandler authAccessDeniedHandler;
 	@Autowired
-	private UserDetailsService uds;
+	private AuthenticationConfiguration authenticationConfiguration;
+	@Autowired
+	private JwtProvider jwtProvider;
 	
 	/**
 	 * 패스워드 인코더
@@ -40,11 +40,21 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
+	/**
+	 * AuthenticationManager (인증 담당)을 시큐리티에서 가져오기 위한 설정 
+	 */
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+		return configuration.getAuthenticationManager();
+	}
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 			.csrf().disable()
+			.formLogin().disable()
 			.httpBasic().disable() // 쿠키방식 사용, Bearer : 토큰(노출 가능) 방식 사용할 예정
+			.addFilterAt(new AuthenticationFilter(authenticationManager(authenticationConfiguration), jwtProvider), UsernamePasswordAuthenticationFilter.class) // 인증 필터 등록
 			.sessionManagement() // 세션 정책을 Stateless로 지정해 Spring Security가 세션을 생성하지 않고, 각 요청 간 상태를 유지하지 않음을 의미 -> SecurityContextHolder가 세션을 사용하지 않게 됨
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
@@ -59,25 +69,15 @@ public class SecurityConfig {
 				 * 아래와 같은 것
 				 */
 				.antMatchers("/resources/**").permitAll()
-				.antMatchers("/user/logout", "/user/editProfile", "developer/Info").authenticated()
+				.antMatchers("/user/logout", "/user/editProfile", "/developer/Info").authenticated()
 				.antMatchers("/developer/register", "/developer/profile", "/developer/readPage").hasRole("DEVELOPER")
 				.antMatchers("/business/register").hasRole("BUSINESS")
 				.anyRequest().permitAll()
-				.and()
-			.formLogin()
-				.loginPage("/user/login").permitAll()
-				.usernameParameter("email")
-				.passwordParameter("password")
-				.loginProcessingUrl("/user/login")
-				.failureHandler(loginFailureHandler)
-				.successHandler(loginSuccessHandler)
 				.and()
 			.rememberMe()
 				.rememberMeCookieName("Id")
 				.rememberMeParameter("checked")
 				.tokenValiditySeconds(60*60*24*15)
-				.userDetailsService(uds)
-				.authenticationSuccessHandler(loginSuccessHandler)
 				.and()
 			.logout()
 				.logoutUrl("/user/logout")
