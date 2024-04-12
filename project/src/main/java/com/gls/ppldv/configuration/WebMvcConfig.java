@@ -13,12 +13,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.WebContentInterceptor;
 
 import com.gls.ppldv.configuration.security.interceptor.CustomInterceptor;
+import com.gls.ppldv.configuration.security.interceptor.FindPassInterceptor;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Autowired
 	private CustomInterceptor customInterceptor;
+	@Autowired
+	private FindPassInterceptor findPassInterceptor;
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -51,6 +54,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
         		.excludePathPatterns("/developer/Info")
         		.excludePathPatterns("/business/search")
         		.excludePathPatterns("/business/project");
+        
+        registry.addInterceptor(findPassInterceptor)
+        		.addPathPatterns("/user/passAuth")
+        		.addPathPatterns("/user/changePass");
+        
 	}
 
 	@Override

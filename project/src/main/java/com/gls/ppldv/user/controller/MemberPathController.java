@@ -1,14 +1,9 @@
 package com.gls.ppldv.user.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,44 +21,6 @@ import lombok.RequiredArgsConstructor;
 public class MemberPathController {
 
 	private final MemberService ms;
-
-	// 유저 회원가입
-	@GetMapping("/register")
-	public String logon() {
-		return "/member/register";
-	}
-
-	// 유저 로그인
-	@GetMapping("/login")
-	public String login() {
-		return "/member/login";
-	}
-	
-	// 유저 비밀번호 찾기
-	@GetMapping("/findPass")
-	public String findPass() {
-		return "/member/findPass";
-	}
-	
-	// 로그아웃 처리
-	@GetMapping("/logout")
-	public String logout(HttpServletResponse response, @CookieValue(name = "Id", required = false) Cookie cookie,
-			HttpSession session, RedirectAttributes rttrs) {
-		session.removeAttribute("loginMember");
-
-		if (cookie != null) {
-			cookie.setPath("/");
-			cookie.setMaxAge(0);
-			response.addCookie(cookie);
-		}
-
-		return "redirect:/";
-	}
-
-	@GetMapping("/editProfile")
-	public String editProfile() {
-		return "/member/editProfile";
-	}
 
 	// 회원정보 수정
 	@PostMapping("/edit")

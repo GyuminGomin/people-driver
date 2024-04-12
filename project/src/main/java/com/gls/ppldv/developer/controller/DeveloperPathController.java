@@ -25,12 +25,7 @@ public class DeveloperPathController {
 
 	private final DeveloperService ds;
 
-	@GetMapping("/register")
-	public String register() {
-
-		return "/developer/register";
-	}
-
+	// GET 요청으로 id 값에 따라 데이터를 보내주는 작업으로 변경해야함
 	@GetMapping("/profile")
 	public String profile(Long id, Cri cri1, Criteria cri2 , Model model) throws Exception {
 
@@ -55,6 +50,7 @@ public class DeveloperPathController {
 		return "/developer/profile";
 	}
 
+	// 
 	@GetMapping("/readPage")
 	public String readPage(
 			Long dno, // 프로필 아이디
